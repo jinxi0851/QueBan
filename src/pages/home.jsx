@@ -1996,9 +1996,6 @@ export default function Home(props) {
     }
     setLoading(true);
     try {
-      // 模拟随机生成
-      await new Promise(resolve => setTimeout(resolve, 800));
-
       // 获取用户自建拿手菜
       let userDishes = [];
       try {
@@ -2012,34 +2009,25 @@ export default function Home(props) {
         console.log('获取用户拿手菜失败:', error);
       }
 
-      // 随机选择菜单组合
-      const randomIndex = Math.floor(Math.random() * menuDatabase.length);
-      let selectedMenu = menuDatabase[randomIndex];
-
-      // 如果用户有拿手菜，30%概率包含一个
-      if (userDishes.length > 0 && Math.random() < 0.3) {
-        const randomUserDish = userDishes[Math.floor(Math.random() * userDishes.length)];
-        // 随机替换一个菜品
-        const replaceIndex = Math.floor(Math.random() * selectedMenu.dishes.length);
-        selectedMenu = {
-          ...selectedMenu,
-          dishes: [...selectedMenu.dishes],
-          name: selectedMenu.name + '（含你的拿手菜）'
-        };
-        selectedMenu.dishes[replaceIndex] = {
-          name: randomUserDish.name,
-          tags: ['拿手菜', '个人定制'],
-          difficulty: randomUserDish.difficulty || '中等',
-          time: randomUserDish.time || '20分钟'
-        };
-      }
-      const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
-      setMenu({
-        ...selectedMenu,
-        message: randomMessage,
-        date: new Date().toISOString()
+      // 调用菜单生成云函数
+      const result = await $w.cloud.callFunction({
+        name: 'menuGeneration',
+        data: {
+          userId: $w.auth.currentUser?.userId,
+          userDishes: userDishes
+        }
       });
-      setIsLiked(false); // 扣减次数
+      if (result.result.success) {
+        setMenu(result.result.menu);
+        setRemainingCount(result.result.remainingCount);
+        setIsLiked(false);
+        toast({
+          title: '菜单生成成功！',
+          description: '快看看今天吃什么吧~'
+        });
+      } else {
+        throw new Error(result.result.error);
+      }
       // 扣减次数
       // 扣减次数
       // 扣减次数

@@ -25,12 +25,18 @@ export default function MyDishes({
   }, []);
   const loadUserDishes = async () => {
     try {
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database();
-      const result = await db.collection('user_dishes').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
-      setDishes(result.data || []);
+      // 调用拿手菜管理云函数
+      const result = await $w.cloud.callFunction({
+        name: 'userDishesManagement',
+        data: {
+          action: 'getDishes'
+        }
+      });
+      if (result.result.success) {
+        setDishes(result.result.dishes);
+      } else {
+        throw new Error(result.result.error);
+      }
     } catch (error) {
       console.error('加载拿手菜失败:', error);
       toast({
@@ -51,30 +57,30 @@ export default function MyDishes({
     }
     setLoading(true);
     try {
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database();
-      await db.collection('user_dishes').add({
+      // 调用拿手菜管理云函数
+      const result = await $w.cloud.callFunction({
+        name: 'userDishesManagement',
         data: {
-          name: newDish.name,
-          difficulty: newDish.difficulty,
-          time: newDish.time,
-          description: newDish.description,
-          createTime: new Date().toISOString(),
-          _openid: tcb.auth().currentUser?.openid
+          action: 'addDish',
+          dishData: newDish
         }
       });
-      toast({
-        title: '添加成功',
-        description: '您的拿手菜已添加！'
-      });
-      setNewDish({
-        name: '',
-        difficulty: '中等',
-        time: '20分钟',
-        description: ''
-      });
-      setShowAddForm(false);
-      loadUserDishes();
+      if (result.result.success) {
+        toast({
+          title: '添加成功',
+          description: '您的拿手菜已添加！'
+        });
+        setNewDish({
+          name: '',
+          difficulty: '中等',
+          time: '20分钟',
+          description: ''
+        });
+        setShowAddForm(false);
+        loadUserDishes();
+      } else {
+        throw new Error(result.result.error);
+      }
     } catch (error) {
       console.error('添加拿手菜失败:', error);
       toast({
@@ -91,14 +97,23 @@ export default function MyDishes({
       return;
     }
     try {
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database();
-      await db.collection('user_dishes').doc(dishId).remove();
-      toast({
-        title: '删除成功',
-        description: '拿手菜已删除'
+      // 调用拿手菜管理云函数
+      const result = await $w.cloud.callFunction({
+        name: 'userDishesManagement',
+        data: {
+          action: 'deleteDish',
+          dishId: dishId
+        }
       });
-      loadUserDishes();
+      if (result.result.success) {
+        toast({
+          title: '删除成功',
+          description: '拿手菜已删除'
+        });
+        loadUserDishes();
+      } else {
+        throw new Error(result.result.error);
+      }
     } catch (error) {
       console.error('删除拿手菜失败:', error);
       toast({
