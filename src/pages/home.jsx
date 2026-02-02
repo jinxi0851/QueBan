@@ -927,8 +927,8 @@ export default function Home(props) {
   // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
-  // 每日精选图片库
-  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];
+  // 每日精选图片库 - QueBan女王盛宴主题
+  const dailyImages = ['https://cersay-0gtnza71ab2663d4-1397510798.tcloudbaseapp.com/resources/2026-01/lowcode-2423551'];
   useEffect(() => {
     loadUserInfo(); // 随机选择一句小情话
     // 随机选择一句小情话
