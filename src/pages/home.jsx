@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
 // @ts-ignore;
-import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
+import { RefreshCw, Heart, Send, Sparkles } from 'lucide-react';
 
 export default function Home(props) {
   const {
@@ -375,7 +375,23 @@ export default function Home(props) {
         {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{
         animationDelay: '0.3s'
       }}>
-            <UtensilsCrossed className="w-16 h-16 text-[#FF9A8B]/40 mx-auto mb-4" />
+            <svg className="w-16 h-16 text-[#FF9A8B]/40 mx-auto mb-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* 碗 */}
+              <path d="M20 50 C20 70 35 85 50 85 C65 85 80 70 80 50" stroke="currentColor" strokeWidth="3" strokeLinecap="round" fill="none" />
+              <ellipse cx="50" cy="50" rx="30" ry="10" stroke="currentColor" strokeWidth="3" fill="none" />
+              {/* 筷子1 */}
+              <line x1="35" y1="20" x2="35" y2="55" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="35" cy="18" r="2" fill="currentColor" />
+              {/* 筷子2 */}
+              <line x1="45" y1="15" x2="45" y2="50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="45" cy="13" r="2" fill="currentColor" />
+              {/* 筷子3 */}
+              <line x1="55" y1="15" x2="55" y2="50" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="55" cy="13" r="2" fill="currentColor" />
+              {/* 筷子4 */}
+              <line x1="65" y1="20" x2="65" y2="55" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="65" cy="18" r="2" fill="currentColor" />
+            </svg>
             <p className="text-[#636E72]">点击上方按钮，开始今天的美食之旅吧~</p>
           </div>}
       </div>
