@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;const { toast } =
-  useToast();
-  const [posts, setPosts] = useState([]);
+import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;const { toast } = useToast();const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('hot');
   useEffect(() => {
@@ -48,23 +46,23 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 使用虚拟数据
       // 使用虚拟数据
       // 使用虚拟数据
-      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1', menu: { name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟', message: '今天辛苦啦，给你做顿好吃的~' }, authorName: '小美',
-      authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
-      likeCount: 128,
-      commentCount: 23,
-      createTime: new Date(Date.now() - 3600000).toISOString(),
-      aiComment: '这道菜简单又营养，番茄的酸甜配上嫩滑的鸡蛋，简直是绝配！适合忙碌的工作日快速准备~' },
-    {
-      _id: '2',
-      menu: {
-        name: '红烧肉',
-        tags: ['经典', '下饭'],
-        difficulty: '中等',
-        time: '45分钟',
-        message: '这道菜超适合今天的你！' },
-
-      authorName: '大厨阿强',
-      authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka',
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1', menu: { name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟', message: '今天辛苦啦，给你做顿好吃的~' }, authorName: '小美', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix', likeCount: 128, commentCount: 23, createTime: new Date(Date.now() - 3600000).toISOString(), aiComment: '这道菜简单又营养，番茄的酸甜配上嫩滑的鸡蛋，简直是绝配！适合忙碌的工作日快速准备~' }, { _id: '2', menu: { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟', message: '这道菜超适合今天的你！' }, authorName: '大厨阿强', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka',
       likeCount: 256,
       commentCount: 45,
       createTime: new Date(Date.now() - 7200000).toISOString(),
@@ -145,25 +143,25 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 检查是否已点赞
       // 检查是否已点赞
       // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
       const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();if (existingLike.data.length > 0) {// 取消点赞
-        await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).remove();await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount - 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount - 1 } : p));
-        toast({
-          title: '已取消点赞' });
-
-      } else {
-        // 点赞
-        await db.collection('likes').add({
-          postId: postId,
-          createTime: new Date().toISOString() });
-
-        await db.collection('posts').doc(postId).update({
-          likeCount: posts.find((p) => p._id === postId).likeCount + 1 });
-
-        setPosts(posts.map((p) => p._id === postId ? {
-          ...p,
-          likeCount: p.likeCount + 1 } :
-        p));
-        toast({
+        await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).remove();await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount - 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount - 1 } : p));toast({ title: '已取消点赞' });} else {// 点赞
+        await db.collection('likes').add({ postId: postId, createTime: new Date().toISOString() });await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount + 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount + 1 } : p));toast({
           title: '点赞成功！' });
 
       }
@@ -206,7 +204,7 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
   };
   return <div className="min-h-screen bg-gradient-to-br from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
       {/* 顶部标题 */}
-      <div className="pt-12 pb-6 px-6 animate-fadeIn bg-white">
+      <div className="pt-12 pb-6 px-6 animate-fadeIn bg-sky-100">
         <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
         fontFamily: 'Noto Serif SC, serif' }}>
 
