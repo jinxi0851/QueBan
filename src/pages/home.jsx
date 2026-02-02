@@ -928,7 +928,7 @@ export default function Home(props) {
   // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库 - QueBan女王盛宴主题
-  const dailyImages = ['https://cersay-0gtnza71ab2663d4-1397510798.tcloudbaseapp.com/resources/2026-01/lowcode-2423551'];
+  const dailyImages = ['https://cersay-0gtnza71ab2663d4-1397510798.tcloudbaseapp.com/resources/2026-02/lowcode-2424451'];
   useEffect(() => {
     loadUserInfo(); // 随机选择一句小情话
     // 随机选择一句小情话
