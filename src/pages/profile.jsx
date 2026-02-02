@@ -21,13 +21,6 @@ export default function Profile(props) {
   const [partner, setPartner] = useState(null);
   const [communications, setCommunications] = useState([]);
   const [myMenus, setMyMenus] = useState([]);
-  const [showAddMenu, setShowAddMenu] = useState(false);
-  const [newMenu, setNewMenu] = useState({
-    name: '',
-    tags: '',
-    difficulty: '简单',
-    time: ''
-  });
   const [inviteCode, setInviteCode] = useState('');
   const [partnerInviteCode, setPartnerInviteCode] = useState('');
   useEffect(() => {
@@ -215,46 +208,6 @@ export default function Profile(props) {
       });
     }
   };
-  const handleAddMenu = async () => {
-    if (!newMenu.name || !newMenu.time) {
-      toast({
-        title: '请填写完整信息',
-        description: '菜名和用时是必填项',
-        variant: 'destructive'
-      });
-      return;
-    }
-    try {
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database();
-      await db.collection('menus').add({
-        name: newMenu.name,
-        tags: newMenu.tags.split(',').map(tag => tag.trim()),
-        difficulty: newMenu.difficulty,
-        time: newMenu.time,
-        createTime: new Date().toISOString()
-      });
-      toast({
-        title: '添加成功！',
-        description: '你的拿手菜已添加到菜单库'
-      });
-      setNewMenu({
-        name: '',
-        tags: '',
-        difficulty: '简单',
-        time: ''
-      });
-      setShowAddMenu(false);
-      loadMyMenus();
-    } catch (error) {
-      console.error('添加菜单失败:', error);
-      toast({
-        title: '添加失败',
-        description: '请稍后重试',
-        variant: 'destructive'
-      });
-    }
-  };
   const handleUpgradeVip = async () => {
     try {
       const tcb = await $w.cloud.getCloudInstance();
@@ -422,7 +375,7 @@ export default function Profile(props) {
             </Card>
           </div>
 
-          {/* 我的菜单 */}
+          {/* 我的拿手菜 */}
           <div className="px-6 mb-6 animate-fadeIn" style={{
         animationDelay: '0.4s'
       }}>
@@ -434,52 +387,27 @@ export default function Profile(props) {
                     <UtensilsCrossed className="w-5 h-5 text-[#FF6B6B]" />
                     我的拿手菜
                   </CardTitle>
-                  <Button onClick={() => setShowAddMenu(!showAddMenu)} size="sm" className="bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white">
+                  <Button onClick={() => $w.utils.navigateTo({
+                pageId: 'my-dishes'
+              })} size="sm" className="bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white">
                     <Plus className="w-4 h-4 mr-1" />
-                    添加
+                    管理
                   </Button>
                 </div>
               </CardHeader>
               <CardContent>
-                {showAddMenu && <div className="space-y-3 mb-4 p-4 bg-[#FFECD9] rounded-2xl">
-                    <Input value={newMenu.name} onChange={e => setNewMenu({
-                ...newMenu,
-                name: e.target.value
-              })} placeholder="菜名" className="bg-white border-0" />
-                    <Input value={newMenu.tags} onChange={e => setNewMenu({
-                ...newMenu,
-                tags: e.target.value
-              })} placeholder="标签（用逗号分隔）" className="bg-white border-0" />
-                    <div className="flex gap-2">
-                      <Input value={newMenu.time} onChange={e => setNewMenu({
-                  ...newMenu,
-                  time: e.target.value
-                })} placeholder="用时（如：30分钟）" className="bg-white border-0 flex-1" />
-                      <select value={newMenu.difficulty} onChange={e => setNewMenu({
-                  ...newMenu,
-                  difficulty: e.target.value
-                })} className="bg-white border-0 rounded-lg px-3">
-                        <option value="简单">简单</option>
-                        <option value="中等">中等</option>
-                        <option value="困难">困难</option>
-                      </select>
-                    </div>
-                    <Button onClick={handleAddMenu} className="w-full bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white">
-                      保存
-                    </Button>
-                  </div>}
-                
-                {myMenus.length > 0 ? <div className="space-y-2">
-                    {myMenus.map((menu, index) => <div key={index} className="flex items-center justify-between p-3 bg-[#FFECD9] rounded-xl">
-                        <div>
-                          <div className="font-semibold text-[#2D3436]">{menu.name}</div>
-                          <div className="text-xs text-[#636E72]">{menu.difficulty} · {menu.time}</div>
-                        </div>
-                        <ChevronRight className="w-5 h-5 text-[#636E72]" />
-                      </div>)}
-                  </div> : <div className="text-center py-8 text-[#636E72]">
-                    还没有添加拿手菜哦~
-                  </div>}
+                <div className="text-center py-8">
+                  <div className="text-4xl font-bold text-[#FF6B6B] mb-2">{myMenus.length}</div>
+                  <div className="text-[#636E72] mb-4">道拿手菜</div>
+                  <p className="text-[#636E72] text-sm mb-4">
+                    {myMenus.length === 0 ? '还没有添加拿手菜，点击上方按钮开始添加吧！' : '点击管理按钮查看和编辑您的拿手菜'}
+                  </p>
+                  <Button onClick={() => $w.utils.navigateTo({
+                pageId: 'my-dishes'
+              })} className="bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white rounded-full px-6">
+                    {myMenus.length === 0 ? '添加拿手菜' : '管理拿手菜'}
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

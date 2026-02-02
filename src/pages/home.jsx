@@ -277,105 +277,145 @@ export default function Home(props) {
   // 预设家常菜库
   // 预设家常菜库
   const menuDatabase = [{
-    name: '番茄炒蛋',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
-    time: '10分钟'
+    name: '温馨家常套餐',
+    dishes: [{
+      name: '番茄炒蛋',
+      tags: ['家常', '快手'],
+      difficulty: '简单',
+      time: '10分钟'
+    }, {
+      name: '蒜蓉西兰花',
+      tags: ['清淡', '健康'],
+      difficulty: '简单',
+      time: '8分钟'
+    }, {
+      name: '冬瓜排骨汤',
+      tags: ['汤品', '营养'],
+      difficulty: '简单',
+      time: '1小时'
+    }],
+    tags: ['家常', '营养', '温馨'],
+    totalTime: '1小时20分钟'
   }, {
-    name: '红烧肉',
-    tags: ['经典', '下饭'],
-    difficulty: '中等',
-    time: '45分钟'
+    name: '经典下饭菜',
+    dishes: [{
+      name: '红烧肉',
+      tags: ['经典', '下饭'],
+      difficulty: '中等',
+      time: '45分钟'
+    }, {
+      name: '麻婆豆腐',
+      tags: ['川菜', '下饭'],
+      difficulty: '简单',
+      time: '20分钟'
+    }, {
+      name: '白灼菜心',
+      tags: ['清淡', '快手'],
+      difficulty: '简单',
+      time: '5分钟'
+    }],
+    tags: ['经典', '下饭', '川菜'],
+    totalTime: '1小时10分钟'
   }, {
-    name: '清蒸鲈鱼',
-    tags: ['清淡', '营养'],
-    difficulty: '简单',
-    time: '15分钟'
+    name: '清淡营养套餐',
+    dishes: [{
+      name: '清蒸鲈鱼',
+      tags: ['清淡', '营养'],
+      difficulty: '简单',
+      time: '15分钟'
+    }, {
+      name: '蒸蛋羹',
+      tags: ['清淡', '营养'],
+      difficulty: '简单',
+      time: '10分钟'
+    }, {
+      name: '清炒时蔬',
+      tags: ['清淡', '健康'],
+      difficulty: '简单',
+      time: '8分钟'
+    }],
+    tags: ['清淡', '营养', '健康'],
+    totalTime: '35分钟'
   }, {
-    name: '麻婆豆腐',
-    tags: ['川菜', '下饭'],
-    difficulty: '简单',
-    time: '20分钟'
+    name: '川菜经典组合',
+    dishes: [{
+      name: '宫保鸡丁',
+      tags: ['川菜', '经典'],
+      difficulty: '中等',
+      time: '25分钟'
+    }, {
+      name: '鱼香肉丝',
+      tags: ['川菜', '下饭'],
+      difficulty: '中等',
+      time: '20分钟'
+    }, {
+      name: '回锅肉',
+      tags: ['川菜', '经典'],
+      difficulty: '中等',
+      time: '25分钟'
+    }],
+    tags: ['川菜', '经典', '下饭'],
+    totalTime: '1小时10分钟'
   }, {
-    name: '糖醋排骨',
-    tags: ['酸甜', '经典'],
-    difficulty: '中等',
-    time: '40分钟'
+    name: '快手简单餐',
+    dishes: [{
+      name: '番茄炒蛋',
+      tags: ['家常', '快手'],
+      difficulty: '简单',
+      time: '10分钟'
+    }, {
+      name: '酸辣土豆丝',
+      tags: ['家常', '快手'],
+      difficulty: '简单',
+      time: '10分钟'
+    }, {
+      name: '蛋炒饭',
+      tags: ['快手', '主食'],
+      difficulty: '简单',
+      time: '10分钟'
+    }],
+    tags: ['快手', '简单', '主食'],
+    totalTime: '30分钟'
   }, {
-    name: '蒜蓉西兰花',
-    tags: ['清淡', '健康'],
-    difficulty: '简单',
-    time: '8分钟'
+    name: '创意美味套餐',
+    dishes: [{
+      name: '可乐鸡翅',
+      tags: ['创意', '下饭'],
+      difficulty: '简单',
+      time: '30分钟'
+    }, {
+      name: '糖醋排骨',
+      tags: ['酸甜', '经典'],
+      difficulty: '中等',
+      time: '40分钟'
+    }, {
+      name: '凉拌黄瓜',
+      tags: ['凉菜', '快手'],
+      difficulty: '简单',
+      time: '5分钟'
+    }],
+    tags: ['创意', '酸甜', '下饭'],
+    totalTime: '1小时15分钟'
   }, {
-    name: '宫保鸡丁',
-    tags: ['川菜', '经典'],
-    difficulty: '中等',
-    time: '25分钟'
-  }, {
-    name: '冬瓜排骨汤',
-    tags: ['汤品', '营养'],
-    difficulty: '简单',
-    time: '1小时'
-  }, {
-    name: '鱼香肉丝',
-    tags: ['川菜', '下饭'],
-    difficulty: '中等',
-    time: '20分钟'
-  }, {
-    name: '白灼菜心',
-    tags: ['清淡', '快手'],
-    difficulty: '简单',
-    time: '5分钟'
-  }, {
-    name: '可乐鸡翅',
-    tags: ['创意', '下饭'],
-    difficulty: '简单',
-    time: '30分钟'
-  }, {
-    name: '酸辣土豆丝',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
-    time: '10分钟'
-  }, {
-    name: '青椒肉丝',
-    tags: ['家常', '下饭'],
-    difficulty: '简单',
-    time: '15分钟'
-  }, {
-    name: '蒸蛋羹',
-    tags: ['清淡', '营养'],
-    difficulty: '简单',
-    time: '10分钟'
-  }, {
-    name: '回锅肉',
-    tags: ['川菜', '经典'],
-    difficulty: '中等',
-    time: '25分钟'
-  }, {
-    name: '凉拌黄瓜',
-    tags: ['凉菜', '快手'],
-    difficulty: '简单',
-    time: '5分钟'
-  }, {
-    name: '红烧茄子',
-    tags: ['下饭', '经典'],
-    difficulty: '中等',
-    time: '30分钟'
-  }, {
-    name: '清炒时蔬',
-    tags: ['清淡', '健康'],
-    difficulty: '简单',
-    time: '8分钟'
-  }, {
-    name: '水煮肉片',
-    tags: ['川菜', '下饭'],
-    difficulty: '中等',
-    time: '30分钟'
-  }, {
-    name: '蛋炒饭',
-    tags: ['快手', '主食'],
-    difficulty: '简单',
-    time: '10分钟'
+    name: '家常下饭组合',
+    dishes: [{
+      name: '青椒肉丝',
+      tags: ['家常', '下饭'],
+      difficulty: '简单',
+      time: '15分钟'
+    }, {
+      name: '红烧茄子',
+      tags: ['下饭', '经典'],
+      difficulty: '中等',
+      time: '30分钟'
+    }, {
+      name: '水煮肉片',
+      tags: ['川菜', '下饭'],
+      difficulty: '中等',
+      time: '30分钟'
+    }],
+    tags: ['家常', '下饭', '经典'],
+    totalTime: '1小时15分钟'
   }]; // 俏皮话库
   // 俏皮话库
   // 俏皮话库
@@ -1958,8 +1998,41 @@ export default function Home(props) {
     try {
       // 模拟随机生成
       await new Promise(resolve => setTimeout(resolve, 800));
+
+      // 获取用户自建拿手菜
+      let userDishes = [];
+      try {
+        const tcb = await $w.cloud.getCloudInstance();
+        const db = tcb.database();
+        const userDishesResult = await db.collection('user_dishes').where({
+          _openid: tcb.auth().currentUser?.openid
+        }).get();
+        userDishes = userDishesResult.data || [];
+      } catch (error) {
+        console.log('获取用户拿手菜失败:', error);
+      }
+
+      // 随机选择菜单组合
       const randomIndex = Math.floor(Math.random() * menuDatabase.length);
-      const selectedMenu = menuDatabase[randomIndex];
+      let selectedMenu = menuDatabase[randomIndex];
+
+      // 如果用户有拿手菜，30%概率包含一个
+      if (userDishes.length > 0 && Math.random() < 0.3) {
+        const randomUserDish = userDishes[Math.floor(Math.random() * userDishes.length)];
+        // 随机替换一个菜品
+        const replaceIndex = Math.floor(Math.random() * selectedMenu.dishes.length);
+        selectedMenu = {
+          ...selectedMenu,
+          dishes: [...selectedMenu.dishes],
+          name: selectedMenu.name + '（含你的拿手菜）'
+        };
+        selectedMenu.dishes[replaceIndex] = {
+          name: randomUserDish.name,
+          tags: ['拿手菜', '个人定制'],
+          difficulty: randomUserDish.difficulty || '中等',
+          time: randomUserDish.time || '20分钟'
+        };
+      }
       const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
       setMenu({
         ...selectedMenu,
@@ -2881,16 +2954,37 @@ export default function Home(props) {
                 {/* 菜品信息 */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="text-center">
-                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.difficulty}</div>
-                    <div className="text-[#636E72] text-sm">难度</div>
+                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.dishes?.length || 3}</div>
+                    <div className="text-[#636E72] text-sm">道菜</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.time}</div>
-                    <div className="text-[#636E72] text-sm">用时</div>
+                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.totalTime}</div>
+                    <div className="text-[#636E72] text-sm">总用时</div>
                   </div>
                   <div className="text-center">
                     <div className="text-[#FF6B6B] font-bold text-lg">{menu.tags[0]}</div>
                     <div className="text-[#636E72] text-sm">特色</div>
+                  </div>
+                </div>
+                
+                {/* 菜品列表 */}
+                <div className="mb-6">
+                  <h4 className="text-[#2D3436] font-semibold mb-3">菜品清单：</h4>
+                  <div className="space-y-3">
+                    {menu.dishes?.map((dish, index) => <div key={index} className="bg-[#FFECD9]/50 rounded-xl p-3">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-medium text-[#2D3436]">{dish.name}</span>
+                          <span className="text-[#FF6B6B] text-sm">{dish.time}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div className="flex flex-wrap gap-1">
+                            {dish.tags?.map((tag, tagIndex) => <span key={tagIndex} className="bg-white/60 text-[#636E72] px-2 py-1 rounded-full text-xs">
+                                {tag}
+                              </span>)}
+                          </div>
+                          <span className="text-[#636E72] text-xs">{dish.difficulty}</span>
+                        </div>
+                      </div>)}
                   </div>
                 </div>
 
