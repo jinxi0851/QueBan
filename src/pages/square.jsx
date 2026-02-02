@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;
-  const {
-    toast } =
+import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;const { toast } =
   useToast();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,15 +40,15 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 使用虚拟数据
       // 使用虚拟数据
       // 使用虚拟数据
-      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1',
-      menu: {
-        name: '番茄炒蛋',
-        tags: ['家常', '快手'],
-        difficulty: '简单',
-        time: '10分钟',
-        message: '今天辛苦啦，给你做顿好吃的~' },
-
-      authorName: '小美',
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1', menu: { name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟', message: '今天辛苦啦，给你做顿好吃的~' }, authorName: '小美',
       authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
       likeCount: 128,
       commentCount: 23,
@@ -139,16 +137,16 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 检查是否已点赞
       // 检查是否已点赞
       // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
       const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();if (existingLike.data.length > 0) {// 取消点赞
-        await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).
-        remove();
-        await db.collection('posts').doc(postId).update({
-          likeCount: posts.find((p) => p._id === postId).likeCount - 1 });
-
-        setPosts(posts.map((p) => p._id === postId ? {
-          ...p,
-          likeCount: p.likeCount - 1 } :
-        p));
+        await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).remove();await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount - 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount - 1 } : p));
         toast({
           title: '已取消点赞' });
 
@@ -220,7 +218,7 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       </div>
 
       {/* 标签切换 */}
-      <div className="px-6 mb-6 animate-fadeIn" style={{
+      <div className="px-6 mb-6 animate-fadeIn bg-blue-100" style={{
       animationDelay: '0.1s' }}>
 
         <div className="bg-white/60 backdrop-blur-sm rounded-full p-1 flex gap-1">
