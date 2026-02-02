@@ -6,7 +6,7 @@ import Square from './pages/square';
 import Profile from './pages/profile';
 import Login from './pages/login';
 import MyDishes from './pages/my-dishes';
-import { TabBar } from './components/TabBar';
+import TabBar from './components/TabBar';
 export default function App(props) {
   const [activeTab, setActiveTab] = useState('home');
   const renderPage = () => {
