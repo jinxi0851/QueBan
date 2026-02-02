@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const { $w } = props;const { toast } = useToast();const [menu, setMenu] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const { $w } = props;const { toast } = useToast();const [menu, setMenu] = useState(null);const [loading, setLoading] = useState(false);const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState(null);
   const [remainingCount, setRemainingCount] = useState(5);
   const [sweetMessage, setSweetMessage] = useState('');
@@ -42,39 +40,39 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
   // 预设家常菜库
   // 预设家常菜库
   // 预设家常菜库
-  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟' }, { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟' }, { name: '麻婆豆腐', tags: ['川菜', '下饭'], difficulty: '简单', time: '20分钟' }, { name: '糖醋排骨', tags: ['酸甜', '经典'], difficulty: '中等', time: '40分钟' }, { name: '蒜蓉西兰花', tags: ['清淡', '健康'], difficulty: '简单', time: '8分钟' }, { name: '宫保鸡丁',
-    tags: ['川菜', '经典'],
-    difficulty: '中等',
-    time: '25分钟' },
-  {
-    name: '冬瓜排骨汤',
-    tags: ['汤品', '营养'],
-    difficulty: '简单',
-    time: '1小时' },
-  {
-    name: '鱼香肉丝',
-    tags: ['川菜', '下饭'],
-    difficulty: '中等',
-    time: '20分钟' },
-  {
-    name: '白灼菜心',
-    tags: ['清淡', '快手'],
-    difficulty: '简单',
-    time: '5分钟' },
-  {
-    name: '可乐鸡翅',
-    tags: ['创意', '下饭'],
-    difficulty: '简单',
-    time: '30分钟' },
-  {
-    name: '酸辣土豆丝',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
-    time: '10分钟' },
-  {
-    name: '青椒肉丝',
-    tags: ['家常', '下饭'],
-    difficulty: '简单',
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟' }, { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟' }, { name: '麻婆豆腐', tags: ['川菜', '下饭'], difficulty: '简单', time: '20分钟' }, { name: '糖醋排骨', tags: ['酸甜', '经典'], difficulty: '中等', time: '40分钟' }, { name: '蒜蓉西兰花', tags: ['清淡', '健康'], difficulty: '简单', time: '8分钟' }, { name: '宫保鸡丁', tags: ['川菜', '经典'], difficulty: '中等', time: '25分钟' }, { name: '冬瓜排骨汤', tags: ['汤品', '营养'], difficulty: '简单', time: '1小时' }, { name: '鱼香肉丝', tags: ['川菜', '下饭'], difficulty: '中等', time: '20分钟' }, { name: '白灼菜心', tags: ['清淡', '快手'], difficulty: '简单', time: '5分钟' }, { name: '可乐鸡翅', tags: ['创意', '下饭'], difficulty: '简单', time: '30分钟' }, { name: '酸辣土豆丝', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '青椒肉丝', tags: ['家常', '下饭'], difficulty: '简单',
     time: '15分钟' },
   {
     name: '蒸蛋羹',
@@ -145,7 +143,71 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
   // 俏皮话库
   // 俏皮话库
   // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
   const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！']; // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
@@ -209,6 +271,38 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
     const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setSweetMessage(randomMessage); // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
@@ -241,7 +335,71 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
     const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];setDailyImage(randomImage);}, []);const loadUserInfo = async () => {try {const currentUser = $w.auth.currentUser;if (currentUser?.userId) {setUser(currentUser); // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
@@ -306,8 +464,72 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 检查剩余次数
     // 检查剩余次数
     // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
     if (remainingCount <= 0) {toast({ title: '今日生成次数已用完', description: '升级会员可无限生成菜单，仅需9.9元/月', variant: 'destructive' });return;}setLoading(true);try {// 模拟随机生成
       await new Promise((resolve) => setTimeout(resolve, 800));const randomIndex = Math.floor(Math.random() * menuDatabase.length);const selectedMenu = menuDatabase[randomIndex];const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setMenu({ ...selectedMenu, message: randomMessage, date: new Date().toISOString() });setIsLiked(false); // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
       // 扣减次数
       // 扣减次数
       // 扣减次数
@@ -371,7 +593,71 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
       // 检查是否已绑定关系
       // 检查是否已绑定关系
       // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
       const relationResult = await db.collection('cersay_bind_relations').where({ _openid: tcb.auth().currentUser?.openid }).get();if (relationResult.data.length === 0) {toast({ title: '还未绑定伴侣', description: '请先在"我的"页面绑定你的另一半~', variant: 'destructive' });return;} // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
       // 保存到communications表
       // 保存到communications表
       // 保存到communications表
@@ -428,7 +714,7 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
       {user && <div className="px-6 mb-6 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
 
           <div className="backdrop-blur-sm rounded-2xl p-4 shadow-sm bg-blue-50">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between bg-white">
               <span className="text-[#636E72]">今日剩余生成次数</span>
               <span className="text-[#FF6B6B] font-bold text-lg">{remainingCount}次</span>
             </div>
