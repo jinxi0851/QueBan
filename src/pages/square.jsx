@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';
-export default function Square(props) {
-  const {
+import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const {
     $w } =
   props;
   const {
@@ -40,9 +38,9 @@ export default function Square(props) {
       console.error('加载广场数据失败:', error);
       // 使用虚拟数据
       // 使用虚拟数据
-      setPosts(getMockPosts());} finally {
-      setLoading(false);
-    }
+      // 使用虚拟数据
+      // 使用虚拟数据
+      setPosts(getMockPosts());} finally {setLoading(false);}
   };
   const getMockPosts = () => {
     return [{
@@ -137,9 +135,9 @@ export default function Square(props) {
 
       // 检查是否已点赞
       // 检查是否已点赞
-      const existingLike = await db.collection('likes').where({ postId: postId,
-        _openid: tcb.auth().currentUser?.openid }).
-      get();
+      // 检查是否已点赞
+      // 检查是否已点赞
+      const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();
       if (existingLike.data.length > 0) {
         // 取消点赞
         await db.collection('likes').where({
@@ -240,7 +238,7 @@ export default function Square(props) {
       </div>
 
       {/* 帖子列表 */}
-      <div className="px-6 space-y-4">
+      <div className="px-6 space-y-4 bg-white">
         {loading ? <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF9A8B] mx-auto"></div>
             <p className="text-[#636E72] mt-4">加载中...</p>
