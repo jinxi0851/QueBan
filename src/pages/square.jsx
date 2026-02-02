@@ -5,7 +5,6 @@ import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/co
 // @ts-ignore;
 import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';
 
-import { TabBar } from '@/components/TabBar.jsx';
 export default function Square(props) {
   const {
     $w
@@ -339,9 +338,9 @@ export default function Square(props) {
       return `${days}天前`;
     }
   };
-  return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-blue-100">
+  return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
       {/* 顶部标题 */}
-      <div className="pt-12 pb-6 px-6 animate-fadeIn bg-sky-100">
+      <div className="pt-12 pb-6 px-6 animate-fadeIn">
         <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
         fontFamily: 'Noto Serif SC, serif'
       }}>
@@ -354,7 +353,7 @@ export default function Square(props) {
       </div>
 
       {/* 标签切换 */}
-      <div className="px-6 mb-6 animate-fadeIn bg-blue-100" style={{
+      <div className="px-6 mb-6 animate-fadeIn" style={{
       animationDelay: '0.1s'
     }}>
 
@@ -363,7 +362,7 @@ export default function Square(props) {
             <Flame className="w-4 h-4 mr-2" />
             热门
           </Button>
-          <Button onClick={() => setActiveTab('new')} className={`flex-1 rounded-full transition-all ${activeTab === 'new' ? 'bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white' : 'text-[#636E96] hover:bg-[#FFECD9]'}`}>
+          <Button onClick={() => setActiveTab('new')} className={`flex-1 rounded-full transition-all ${activeTab === 'new' ? 'bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white' : 'text-[#636E72] hover:bg-[#FFECD9]'}`}>
             <Clock className="w-4 h-4 mr-2" />
             最新
           </Button>
@@ -371,7 +370,7 @@ export default function Square(props) {
       </div>
 
       {/* 帖子列表 */}
-      <div className="px-6 space-y-4 bg-blue-100">
+      <div className="px-6 space-y-4">
         {loading ? <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF9A8B] mx-auto"></div>
             <p className="text-[#636E72] mt-4">加载中...</p>
@@ -445,8 +444,5 @@ export default function Square(props) {
               </Card>
             </div>)}
       </div>
-      
-      {/* 底部导航栏 */}
-      <TabBar {...props} />
     </div>;
 }

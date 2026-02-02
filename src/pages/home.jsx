@@ -1,25 +1,8 @@
 // @ts-ignore;
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
-import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
-// @ts-ignore;
-import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
-
-import { TabBar } from '@/components/TabBar.jsx';
-export default function Home(props) {
-  const {
-    $w
-  } = props;
-  const {
-    toast
-  } = useToast();
-  const [menu, setMenu] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState(null);
-  const [remainingCount, setRemainingCount] = useState(5);
-  const [sweetMessage, setSweetMessage] = useState('');
-  const [dailyImage, setDailyImage] = useState('');
+import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
+import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const { $w } = props;const { toast } = useToast();const [menu, setMenu] = useState(null);const [loading, setLoading] = useState(false);const [isLiked, setIsLiked] = useState(false);const [user, setUser] = useState(null);const [remainingCount, setRemainingCount] = useState(5);const [sweetMessage, setSweetMessage] = useState('');const [dailyImage, setDailyImage] = useState('');
 
   // 预设家常菜库
   // 预设家常菜库
@@ -277,107 +260,7 @@ export default function Home(props) {
   // 预设家常菜库
   // 预设家常菜库
   // 预设家常菜库
-  const menuDatabase = [{
-    name: '番茄炒蛋',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
-    time: '10分钟'
-  }, {
-    name: '红烧肉',
-    tags: ['经典', '下饭'],
-    difficulty: '中等',
-    time: '45分钟'
-  }, {
-    name: '清蒸鲈鱼',
-    tags: ['清淡', '营养'],
-    difficulty: '简单',
-    time: '15分钟'
-  }, {
-    name: '麻婆豆腐',
-    tags: ['川菜', '下饭'],
-    difficulty: '简单',
-    time: '20分钟'
-  }, {
-    name: '糖醋排骨',
-    tags: ['酸甜', '经典'],
-    difficulty: '中等',
-    time: '40分钟'
-  }, {
-    name: '蒜蓉西兰花',
-    tags: ['清淡', '健康'],
-    difficulty: '简单',
-    time: '8分钟'
-  }, {
-    name: '宫保鸡丁',
-    tags: ['川菜', '经典'],
-    difficulty: '中等',
-    time: '25分钟'
-  }, {
-    name: '冬瓜排骨汤',
-    tags: ['汤品', '营养'],
-    difficulty: '简单',
-    time: '1小时'
-  }, {
-    name: '鱼香肉丝',
-    tags: ['川菜', '下饭'],
-    difficulty: '中等',
-    time: '20分钟'
-  }, {
-    name: '白灼菜心',
-    tags: ['清淡', '快手'],
-    difficulty: '简单',
-    time: '5分钟'
-  }, {
-    name: '可乐鸡翅',
-    tags: ['创意', '下饭'],
-    difficulty: '简单',
-    time: '30分钟'
-  }, {
-    name: '酸辣土豆丝',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
-    time: '10分钟'
-  }, {
-    name: '青椒肉丝',
-    tags: ['家常', '下饭'],
-    difficulty: '简单',
-    time: '15分钟'
-  }, {
-    name: '蒸蛋羹',
-    tags: ['清淡', '营养'],
-    difficulty: '简单',
-    time: '10分钟'
-  }, {
-    name: '回锅肉',
-    tags: ['川菜', '经典'],
-    difficulty: '中等',
-    time: '25分钟'
-  }, {
-    name: '凉拌黄瓜',
-    tags: ['凉菜', '快手'],
-    difficulty: '简单',
-    time: '5分钟'
-  }, {
-    name: '红烧茄子',
-    tags: ['下饭', '经典'],
-    difficulty: '中等',
-    time: '30分钟'
-  }, {
-    name: '清炒时蔬',
-    tags: ['清淡', '健康'],
-    difficulty: '简单',
-    time: '8分钟'
-  }, {
-    name: '水煮肉片',
-    tags: ['川菜', '下饭'],
-    difficulty: '中等',
-    time: '30分钟'
-  }, {
-    name: '蛋炒饭',
-    tags: ['快手', '主食'],
-    difficulty: '简单',
-    time: '10分钟'
-  }]; // 俏皮话库
+  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟' }, { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟' }, { name: '麻婆豆腐', tags: ['川菜', '下饭'], difficulty: '简单', time: '20分钟' }, { name: '糖醋排骨', tags: ['酸甜', '经典'], difficulty: '中等', time: '40分钟' }, { name: '蒜蓉西兰花', tags: ['清淡', '健康'], difficulty: '简单', time: '8分钟' }, { name: '宫保鸡丁', tags: ['川菜', '经典'], difficulty: '中等', time: '25分钟' }, { name: '冬瓜排骨汤', tags: ['汤品', '营养'], difficulty: '简单', time: '1小时' }, { name: '鱼香肉丝', tags: ['川菜', '下饭'], difficulty: '中等', time: '20分钟' }, { name: '白灼菜心', tags: ['清淡', '快手'], difficulty: '简单', time: '5分钟' }, { name: '可乐鸡翅', tags: ['创意', '下饭'], difficulty: '简单', time: '30分钟' }, { name: '酸辣土豆丝', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '青椒肉丝', tags: ['家常', '下饭'], difficulty: '简单', time: '15分钟' }, { name: '蒸蛋羹', tags: ['清淡', '营养'], difficulty: '简单', time: '10分钟' }, { name: '回锅肉', tags: ['川菜', '经典'], difficulty: '中等', time: '25分钟' }, { name: '凉拌黄瓜', tags: ['凉菜', '快手'], difficulty: '简单', time: '5分钟' }, { name: '红烧茄子', tags: ['下饭', '经典'], difficulty: '中等', time: '30分钟' }, { name: '清炒时蔬', tags: ['清淡', '健康'], difficulty: '简单', time: '8分钟' }, { name: '水煮肉片', tags: ['川菜', '下饭'], difficulty: '中等', time: '30分钟' }, { name: '蛋炒饭', tags: ['快手', '主食'], difficulty: '简单', time: '10分钟' }]; // 俏皮话库
   // 俏皮话库
   // 俏皮话库
   // 俏皮话库
@@ -889,9 +772,7 @@ export default function Home(props) {
   // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
-  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];
-  useEffect(() => {
-    loadUserInfo(); // 随机选择一句小情话
+  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];useEffect(() => {loadUserInfo(); // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
@@ -1147,8 +1028,7 @@ export default function Home(props) {
     // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
-    const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
-    setSweetMessage(randomMessage); // 随机选择一张每日图片
+    const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setSweetMessage(randomMessage); // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
@@ -1404,14 +1284,7 @@ export default function Home(props) {
     // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
-    const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];
-    setDailyImage(randomImage);
-  }, []);
-  const loadUserInfo = async () => {
-    try {
-      const currentUser = $w.auth.currentUser;
-      if (currentUser?.userId) {
-        setUser(currentUser); // 查询用户剩余次数
+    const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];setDailyImage(randomImage);}, []);const loadUserInfo = async () => {try {const currentUser = $w.auth.currentUser;if (currentUser?.userId) {setUser(currentUser); // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
@@ -1667,29 +1540,8 @@ export default function Home(props) {
         // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
-        const tcb = await $w.cloud.getCloudInstance();
-        const db = tcb.database();
-        const result = await db.collection('users').where({
-          _openid: tcb.auth().currentUser?.openid
-        }).get();
-        if (result.data.length > 0) {
-          setRemainingCount(result.data[0].remainingCount || 5);
-        }
-      }
-    } catch (error) {
-      console.error('加载用户信息失败:', error);
-    }
-  };
-  const generateMenu = async () => {
-    // 检查登录状态
-    if (!$w.auth.currentUser?.userId) {
-      toast({
-        title: '请先登录',
-        description: '登录后才能使用菜单生成功能哦~',
-        variant: 'destructive'
-      });
-      return;
-    } // 检查剩余次数
+        const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();const result = await db.collection('users').where({ _openid: tcb.auth().currentUser?.openid }).get();if (result.data.length > 0) {setRemainingCount(result.data[0].remainingCount || 5);}}} catch (error) {console.error('加载用户信息失败:', error);}};const generateMenu = async () => {// 检查登录状态
+    if (!$w.auth.currentUser?.userId) {toast({ title: '请先登录', description: '登录后才能使用菜单生成功能哦~', variant: 'destructive' });return;} // 检查剩余次数
     // 检查剩余次数
     // 检查剩余次数
     // 检查剩余次数
@@ -1945,27 +1797,8 @@ export default function Home(props) {
     // 检查剩余次数
     // 检查剩余次数
     // 检查剩余次数
-    if (remainingCount <= 0) {
-      toast({
-        title: '今日生成次数已用完',
-        description: '升级会员可无限生成菜单，仅需9.9元/月',
-        variant: 'destructive'
-      });
-      return;
-    }
-    setLoading(true);
-    try {
-      // 模拟随机生成
-      await new Promise(resolve => setTimeout(resolve, 800));
-      const randomIndex = Math.floor(Math.random() * menuDatabase.length);
-      const selectedMenu = menuDatabase[randomIndex];
-      const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
-      setMenu({
-        ...selectedMenu,
-        message: randomMessage,
-        date: new Date().toISOString()
-      });
-      setIsLiked(false); // 扣减次数
+    if (remainingCount <= 0) {toast({ title: '今日生成次数已用完', description: '升级会员可无限生成菜单，仅需9.9元/月', variant: 'destructive' });return;}setLoading(true);try {// 模拟随机生成
+      await new Promise((resolve) => setTimeout(resolve, 800));const randomIndex = Math.floor(Math.random() * menuDatabase.length);const selectedMenu = menuDatabase[randomIndex];const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setMenu({ ...selectedMenu, message: randomMessage, date: new Date().toISOString() });setIsLiked(false); // 扣减次数
       // 扣减次数
       // 扣减次数
       // 扣减次数
@@ -2221,48 +2054,7 @@ export default function Home(props) {
       // 扣减次数
       // 扣减次数
       // 扣减次数
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database();
-      await db.collection('users').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).update({
-        remainingCount: remainingCount - 1
-      });
-      setRemainingCount(remainingCount - 1);
-      toast({
-        title: '菜单生成成功！',
-        description: '快看看今天吃什么吧~'
-      });
-    } catch (error) {
-      console.error('生成菜单失败:', error);
-      toast({
-        title: '生成失败',
-        description: '请稍后重试',
-        variant: 'destructive'
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-    toast({
-      title: isLiked ? '已取消收藏' : '已收藏',
-      description: isLiked ? '这道菜已从收藏中移除' : '这道菜已加入收藏'
-    });
-  };
-  const handleSendToPartner = async () => {
-    if (!$w.auth.currentUser?.userId) {
-      toast({
-        title: '请先登录',
-        description: '登录后才能发送菜单给TA哦~',
-        variant: 'destructive'
-      });
-      return;
-    }
-    try {
-      const tcb = await $w.cloud.getCloudInstance();
-      const db = tcb.database(); // 检查是否已绑定关系
+      const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();await db.collection('users').where({ _openid: tcb.auth().currentUser?.openid }).update({ remainingCount: remainingCount - 1 });setRemainingCount(remainingCount - 1);toast({ title: '菜单生成成功！', description: '快看看今天吃什么吧~' });} catch (error) {console.error('生成菜单失败:', error);toast({ title: '生成失败', description: '请稍后重试', variant: 'destructive' });} finally {setLoading(false);}};const handleLike = () => {setIsLiked(!isLiked);toast({ title: isLiked ? '已取消收藏' : '已收藏', description: isLiked ? '这道菜已从收藏中移除' : '这道菜已加入收藏' });};const handleSendToPartner = async () => {if (!$w.auth.currentUser?.userId) {toast({ title: '请先登录', description: '登录后才能发送菜单给TA哦~', variant: 'destructive' });return;}try {const tcb = await $w.cloud.getCloudInstance();const db = tcb.database(); // 检查是否已绑定关系
       // 检查是否已绑定关系
       // 检查是否已绑定关系
       // 检查是否已绑定关系
@@ -2518,17 +2310,7 @@ export default function Home(props) {
       // 检查是否已绑定关系
       // 检查是否已绑定关系
       // 检查是否已绑定关系
-      const relationResult = await db.collection('cersay_bind_relations').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
-      if (relationResult.data.length === 0) {
-        toast({
-          title: '还未绑定伴侣',
-          description: '请先在"我的"页面绑定你的另一半~',
-          variant: 'destructive'
-        });
-        return;
-      } // 保存到communications表
+      const relationResult = await db.collection('cersay_bind_relations').where({ _openid: tcb.auth().currentUser?.openid }).get();if (relationResult.data.length === 0) {toast({ title: '还未绑定伴侣', description: '请先在"我的"页面绑定你的另一半~', variant: 'destructive' });return;} // 保存到communications表
       // 保存到communications表
       // 保存到communications表
       // 保存到communications表
@@ -2784,32 +2566,10 @@ export default function Home(props) {
       // 保存到communications表
       // 保存到communications表
       // 保存到communications表
-      await db.collection('cersay_communications').add({
-        menu: menu,
-        fromUserId: $w.auth.currentUser.userId,
-        toUserId: relationResult.data[0].partnerId,
-        createTime: new Date().toISOString(),
-        isRead: false
-      });
-      toast({
-        title: '发送成功！',
-        description: 'TA已经收到你的菜单啦~'
-      });
-    } catch (error) {
-      console.error('发送失败:', error);
-      toast({
-        title: '发送失败',
-        description: '请稍后重试',
-        variant: 'destructive'
-      });
-    }
-  };
-  return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-white">
+      await db.collection('cersay_communications').add({ menu: menu, fromUserId: $w.auth.currentUser.userId, toUserId: relationResult.data[0].partnerId, createTime: new Date().toISOString(), isRead: false });toast({ title: '发送成功！', description: 'TA已经收到你的菜单啦~' });} catch (error) {console.error('发送失败:', error);toast({ title: '发送失败', description: '请稍后重试', variant: 'destructive' });}};return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-white">
       {/* 顶部欢迎区 */}
       <div className="pt-12 pb-8 px-6 animate-fadeIn">
-        <h1 className="font-bold text-[#2D3436] mb-2 text-[1.3rem]" style={{
-        fontFamily: 'Noto Serif SC, serif'
-      }}>
+        <h1 className="font-bold text-[#2D3436] mb-2 text-[1.3rem]" style={{ fontFamily: 'Noto Serif SC, serif' }}>
 
           {user?.nickName ? `${user.nickName}，` : ''}今晚吃什么？
         </h1>
@@ -2819,23 +2579,16 @@ export default function Home(props) {
       </div>
 
       {/* 每日精选图片 */}
-      <div className="px-6 mb-6 animate-fadeIn" style={{
-      animationDelay: '0.05s'
-    }}>
+      <div className="px-6 mb-6 animate-fadeIn" style={{ animationDelay: '0.05s' }}>
 
           <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-sm">
-            <img src={dailyImage} alt="每日精选" className="w-full h-auto rounded-xl object-cover" style={{
-          minHeight: '200px',
-          maxHeight: '400px'
-        }} />
+            <img src={dailyImage} alt="每日精选" className="w-full h-auto rounded-xl object-cover" style={{ minHeight: '200px', maxHeight: '400px' }} />
 
           </div>
         </div>
 
       {/* 剩余次数提示 */}
-      {user && <div className="px-6 mb-6 animate-fadeIn" style={{
-      animationDelay: '0.1s'
-    }}>
+      {user && <div className="px-6 mb-6 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
 
           <div className="backdrop-blur-sm rounded-2xl p-4 shadow-sm bg-blue-50">
             <div className="flex items-center justify-between bg-white">
@@ -2848,9 +2601,7 @@ export default function Home(props) {
 
       {/* 主操作区 */}
       <div className="px-6 bg-white">
-        <div className="flex justify-center mb-8 animate-fadeIn" style={{
-        animationDelay: '0.2s'
-      }}>
+        <div className="flex justify-center mb-8 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
 
           <Button onClick={generateMenu} disabled={loading} className="from-[#FF9A8B] to-[#FF6B6B] hover:from-[#FF8A7B] hover:to-[#FF5A5A] text-white rounded-full px-12 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 button-hover bg-blue-700">
             {loading ? <RefreshCw className="w-6 h-6 animate-spin mr-2" /> : <Sparkles className="w-6 h-6 mr-2" />}
@@ -2862,9 +2613,7 @@ export default function Home(props) {
         {menu && <div className="animate-fadeIn">
             <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0 rounded-3xl overflow-hidden card-shadow">
               <CardHeader className="bg-gradient-to-r from-[#FF9A8B]/10 to-[#FF6B6B]/10 pb-4">
-                <CardTitle className="text-2xl text-[#2D3436]" style={{
-              fontFamily: 'Noto Serif SC, serif'
-            }}>
+                <CardTitle className="text-2xl text-[#2D3436]" style={{ fontFamily: 'Noto Serif SC, serif' }}>
 
                   {menu.name}
                 </CardTitle>
@@ -2914,16 +2663,10 @@ export default function Home(props) {
           </div>}
 
         {/* 空状态提示 */}
-        {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{
-        animationDelay: '0.3s'
-      }}>
+        {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
 
             <UtensilsCrossed className="w-16 h-16 mx-auto mb-4 text-blue-700" />
             <p className="text-[#636E72]">点击上方按钮，开始今天的美食之旅吧~</p>
           </div>}
       </div>
-      
-      {/* 底部导航栏 */}
-      <TabBar {...props} />
-    </div>;
-}
+    </div>;}

@@ -1,55 +1,33 @@
 // @ts-ignore;
 import React from 'react';
 // @ts-ignore;
-import { Home, Grid3X3, User } from 'lucide-react';
+import { Home, Square, User } from 'lucide-react';
 
-export default function TabBar(props) {
-  const {
-    $w
-  } = props;
-  const {
-    navigateTo
-  } = $w.utils;
+export function TabBar({
+  activeTab,
+  onTabChange
+}) {
   const tabs = [{
     id: 'home',
     label: '首页',
-    icon: Home,
-    pageId: 'home'
+    icon: Home
   }, {
     id: 'square',
     label: '广场',
-    icon: Grid3X3,
-    pageId: 'square'
+    icon: Square
   }, {
     id: 'profile',
     label: '我的',
-    icon: User,
-    pageId: 'profile'
+    icon: User
   }];
-  const handleTabClick = pageId => {
-    navigateTo({
-      pageId,
-      params: {}
-    });
-  };
-
-  // 获取当前页面ID
-  const getCurrentPageId = () => {
-    const path = window.location.pathname;
-    if (path.includes('/home')) return 'home';
-    if (path.includes('/square')) return 'square';
-    if (path.includes('/profile')) return 'profile';
-    return 'home'; // 默认首页
-  };
-  const currentPageId = getCurrentPageId();
-  return <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-t border-[#FFECD9] px-4 py-2 safe-area-pb">
-      <div className="flex items-center justify-around max-w-md mx-auto">
+  return <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg border-t border-[#FFECD9] px-6 py-3 z-50">
+      <div className="flex justify-around items-center max-w-md mx-auto">
         {tabs.map(tab => {
         const Icon = tab.icon;
-        const isActive = currentPageId === tab.pageId;
-        return <button key={tab.id} onClick={() => handleTabClick(tab.pageId)} className={`flex flex-col items-center gap-1 py-2 px-3 rounded-xl transition-all duration-200 ${isActive ? 'text-[#FF6B6B] bg-gradient-to-t from-[#FF9A8B]/20 to-transparent' : 'text-[#636E72] hover:text-[#FF6B6B] hover:bg-[#FFECD9]/50'}`}>
-              <Icon className={`w-6 h-6 ${isActive ? 'text-[#FF6B6B]' : ''}`} />
-              <span className={`text-xs font-medium ${isActive ? 'text-[#FF6B6B]' : ''}`}>
+        const isActive = activeTab === tab.id;
+        return <button key={tab.id} onClick={() => onTabChange(tab.id)} className={`flex flex-col items-center gap-1 transition-all duration-300 ${isActive ? 'text-[#FF6B6B]' : 'text-[#636E72]'}`}>
+              <Icon className={`w-6 h-6 ${isActive ? 'scale-110' : ''}`} />
+              <span className={`text-xs ${isActive ? 'font-semibold' : ''}`}>
                 {tab.label}
               </span>
             </button>;
@@ -57,3 +35,4 @@ export default function TabBar(props) {
       </div>
     </div>;
 }
+export default TabBar;

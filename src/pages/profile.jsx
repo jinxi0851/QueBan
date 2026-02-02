@@ -1,24 +1,21 @@
 // @ts-ignore;
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
-import { useToast, Button, Card, CardContent, CardHeader, CardTitle, Input } from '@/components/ui';
-// @ts-ignore;
+import { useToast, Button, Card, CardContent, CardHeader, CardTitle, Input } from '@/components/ui'; // @ts-ignore;
 import { Heart, Bookmark, MessageCircle, Crown, Settings, Link2, Plus, User, UtensilsCrossed, ChevronRight, Gift } from 'lucide-react';
-
-import { TabBar } from '@/components/TabBar.jsx';
 export default function Profile(props) {
   const {
-    $w
-  } = props;
+    $w } =
+  props;
   const {
-    toast
-  } = useToast();
+    toast } =
+  useToast();
   const [user, setUser] = useState(null);
   const [stats, setStats] = useState({
     likes: 0,
     favorites: 0,
-    comments: 0
-  });
+    comments: 0 });
+
   const [partner, setPartner] = useState(null);
   const [communications, setCommunications] = useState([]);
   const [myMenus, setMyMenus] = useState([]);
@@ -27,8 +24,8 @@ export default function Profile(props) {
     name: '',
     tags: '',
     difficulty: '简单',
-    time: ''
-  });
+    time: '' });
+
   const [inviteCode, setInviteCode] = useState('');
   const [partnerInviteCode, setPartnerInviteCode] = useState('');
   useEffect(() => {
@@ -52,26 +49,24 @@ export default function Profile(props) {
 
       // 查询用户发布的帖子
       // 查询用户发布的帖子
-      const postsResult = await db.collection('posts').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
+      const postsResult = await db.collection('posts').where({ _openid: tcb.auth().currentUser?.openid }).
+      get();
       let totalLikes = 0;
       let totalComments = 0;
-      postsResult.data.forEach(post => {
+      postsResult.data.forEach((post) => {
         totalLikes += post.likeCount || 0;
         totalComments += post.commentCount || 0;
       });
 
       // 查询收藏数
       // 查询收藏数
-      const favoritesResult = await db.collection('favorites').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
+      const favoritesResult = await db.collection('favorites').where({ _openid: tcb.auth().currentUser?.openid }).
+      get();
       setStats({
         likes: totalLikes,
         favorites: favoritesResult.data.length,
-        comments: totalComments
-      });
+        comments: totalComments });
+
     } catch (error) {
       console.error('加载统计数据失败:', error);
     }
@@ -81,8 +76,8 @@ export default function Profile(props) {
       const tcb = await $w.cloud.getCloudInstance();
       const db = tcb.database();
       const result = await db.collection('cersay_bind_relations').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
+        _openid: tcb.auth().currentUser?.openid }).
+      get();
       if (result.data.length > 0) {
         setPartner(result.data[0]);
       }
@@ -95,8 +90,8 @@ export default function Profile(props) {
       const tcb = await $w.cloud.getCloudInstance();
       const db = tcb.database();
       const result = await db.collection('cersay_communications').where({
-        toUserId: $w.auth.currentUser?.userId
-      }).orderBy('createTime', 'desc').limit(10).get();
+        toUserId: $w.auth.currentUser?.userId }).
+      orderBy('createTime', 'desc').limit(10).get();
       setCommunications(result.data);
     } catch (error) {
       console.error('加载消息失败:', error);
@@ -107,8 +102,8 @@ export default function Profile(props) {
       const tcb = await $w.cloud.getCloudInstance();
       const db = tcb.database();
       const result = await db.collection('menus').where({
-        _openid: tcb.auth().currentUser?.openid
-      }).get();
+        _openid: tcb.auth().currentUser?.openid }).
+      get();
       setMyMenus(result.data);
     } catch (error) {
       console.error('加载我的菜单失败:', error);
@@ -121,16 +116,16 @@ export default function Profile(props) {
         config_version: "env",
         redirect_uri: window.location.href,
         query: {
-          s_domain: $w.utils.resolveStaticResourceUrl("/").replace(/^https?:\/\//, "").split("/")[0]
-        }
-      });
+          s_domain: $w.utils.resolveStaticResourceUrl("/").replace(/^https?:\/\//, "").split("/")[0] } });
+
+
     } catch (error) {
       console.error('登录失败:', error);
       toast({
         title: '登录失败',
         description: '请稍后重试',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
     }
   };
   const handleLogout = async () => {
@@ -139,12 +134,12 @@ export default function Profile(props) {
       await tcb.auth().signOut();
       await tcb.auth().signInAnonymously();
       await $w.auth.getUserInfo({
-        force: true
-      });
+        force: true });
+
       setUser(null);
       toast({
-        title: '已退出登录'
-      });
+        title: '已退出登录' });
+
     } catch (error) {
       console.error('退出登录失败:', error);
     }
@@ -154,16 +149,16 @@ export default function Profile(props) {
     setInviteCode(code);
     toast({
       title: '邀请码已生成',
-      description: `将邀请码 ${code} 发给你的另一半`
-    });
+      description: `将邀请码 ${code} 发给你的另一半` });
+
   };
   const handleBindPartner = async () => {
     if (!partnerInviteCode) {
       toast({
         title: '请输入邀请码',
         description: '请输入你另一半的邀请码',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
       return;
     }
     try {
@@ -172,48 +167,45 @@ export default function Profile(props) {
 
       // 查找邀请码对应的用户
       // 查找邀请码对应的用户
-      const usersResult = await db.collection('users').where({
-        inviteCode: partnerInviteCode
-      }).get();
+      const usersResult = await db.collection('users').where({ inviteCode: partnerInviteCode }).
+      get();
       if (usersResult.data.length === 0) {
         toast({
           title: '邀请码无效',
           description: '请检查邀请码是否正确',
-          variant: 'destructive'
-        });
+          variant: 'destructive' });
+
         return;
       }
       const partnerUser = usersResult.data[0];
 
       // 创建绑定关系
       // 创建绑定关系
-      await db.collection('cersay_bind_relations').add({
-        partnerId: partnerUser._id,
+      await db.collection('cersay_bind_relations').add({ partnerId: partnerUser._id,
         partnerName: partnerUser.nickName,
-        bindTime: new Date().toISOString()
-      });
+        bindTime: new Date().toISOString() });
+
 
       // 保存自己的邀请码
       // 保存自己的邀请码
-      if (inviteCode) {
-        await db.collection('users').where({
-          _openid: tcb.auth().currentUser?.openid
-        }).update({
-          inviteCode: inviteCode
-        });
+      if (inviteCode) {await db.collection('users').where({
+          _openid: tcb.auth().currentUser?.openid }).
+        update({
+          inviteCode: inviteCode });
+
       }
       toast({
         title: '绑定成功！',
-        description: '现在可以和TA互相发送菜单啦~'
-      });
+        description: '现在可以和TA互相发送菜单啦~' });
+
       loadPartnerInfo();
     } catch (error) {
       console.error('绑定失败:', error);
       toast({
         title: '绑定失败',
         description: '请稍后重试',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
     }
   };
   const handleAddMenu = async () => {
@@ -221,8 +213,8 @@ export default function Profile(props) {
       toast({
         title: '请填写完整信息',
         description: '菜名和用时是必填项',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
       return;
     }
     try {
@@ -230,21 +222,21 @@ export default function Profile(props) {
       const db = tcb.database();
       await db.collection('menus').add({
         name: newMenu.name,
-        tags: newMenu.tags.split(',').map(tag => tag.trim()),
+        tags: newMenu.tags.split(',').map((tag) => tag.trim()),
         difficulty: newMenu.difficulty,
         time: newMenu.time,
-        createTime: new Date().toISOString()
-      });
+        createTime: new Date().toISOString() });
+
       toast({
         title: '添加成功！',
-        description: '你的拿手菜已添加到菜单库'
-      });
+        description: '你的拿手菜已添加到菜单库' });
+
       setNewMenu({
         name: '',
         tags: '',
         difficulty: '简单',
-        time: ''
-      });
+        time: '' });
+
       setShowAddMenu(false);
       loadMyMenus();
     } catch (error) {
@@ -252,8 +244,8 @@ export default function Profile(props) {
       toast({
         title: '添加失败',
         description: '请稍后重试',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
     }
   };
   const handleUpgradeVip = async () => {
@@ -262,14 +254,13 @@ export default function Profile(props) {
 
       // 调用云函数创建订单
       // 调用云函数创建订单
-      const result = await tcb.callFunction({
-        name: 'createOrder',
+      const result = await tcb.callFunction({ name: 'createOrder',
         data: {
           planId: 1,
           planName: '月度会员',
-          price: 9.9
-        }
-      });
+          price: 9.9 } });
+
+
       if (result.result.paymentParams) {
         // 调起微信支付
         const wx = tcb.getWx();
@@ -278,30 +269,29 @@ export default function Profile(props) {
           success: () => {
             toast({
               title: '支付成功！',
-              description: '恭喜你成为会员，享受无限菜单生成！'
-            });
+              description: '恭喜你成为会员，享受无限菜单生成！' });
+
             loadUserInfo();
           },
-          fail: error => {
+          fail: (error) => {
             toast({
               title: '支付失败',
               description: error.errMsg,
-              variant: 'destructive'
-            });
-          }
-        });
+              variant: 'destructive' });
+
+          } });
+
       }
     } catch (error) {
       console.error('支付失败:', error);
       toast({
         title: '支付失败',
         description: '请稍后重试',
-        variant: 'destructive'
-      });
+        variant: 'destructive' });
+
     }
   };
-  return (
-    <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-white">
+  return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-white">
       {/* 顶部用户信息 */}
       <div className="pt-12 pb-6 px-6 animate-fadeIn">
         {user ? <div className="flex items-center gap-4">
@@ -326,8 +316,7 @@ export default function Profile(props) {
       {user && <>
           {/* 统计数据 */}
           <div className="px-6 mb-6 animate-fadeIn" style={{
-        animationDelay: '0.1s'
-      }}>
+        animationDelay: '0.1s' }}>
 
             <Card className="bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-3xl">
               <CardContent className="p-6">
@@ -351,8 +340,7 @@ export default function Profile(props) {
 
           {/* 会员卡片 */}
           <div className="px-6 mb-6 animate-fadeIn" style={{
-        animationDelay: '0.2s'
-      }}>
+        animationDelay: '0.2s' }}>
 
             <Card className="bg-gradient-to-br from-[#FF9A8B] to-[#FF6B6B] shadow-xl border-0 rounded-3xl overflow-hidden">
               <CardContent className="p-6 text-white">
@@ -378,8 +366,7 @@ export default function Profile(props) {
 
           {/* 伴侣绑定 */}
           <div className="px-6 mb-6 animate-fadeIn" style={{
-        animationDelay: '0.3s'
-      }}>
+        animationDelay: '0.3s' }}>
 
             <Card className="bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-3xl">
               <CardHeader>
@@ -405,7 +392,7 @@ export default function Profile(props) {
                       <div>
                         <label className="text-sm text-[#636E72] mb-2 block">你的邀请码</label>
                         <div className="flex gap-2">
-                          <Input value={inviteCode} onChange={e => setInviteCode(e.target.value)} placeholder="点击生成邀请码" readOnly className="bg-[#FFECD9] border-0" />
+                          <Input value={inviteCode} onChange={(e) => setInviteCode(e.target.value)} placeholder="点击生成邀请码" readOnly className="bg-[#FFECD9] border-0" />
                           <Button onClick={generateInviteCode} className="bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white">
                             生成
                           </Button>
@@ -413,7 +400,7 @@ export default function Profile(props) {
                       </div>
                       <div>
                         <label className="text-sm text-[#636E72] mb-2 block">TA的邀请码</label>
-                        <Input value={partnerInviteCode} onChange={e => setPartnerInviteCode(e.target.value)} placeholder="输入另一半的邀请码" className="bg-[#FFECD9] border-0" />
+                        <Input value={partnerInviteCode} onChange={(e) => setPartnerInviteCode(e.target.value)} placeholder="输入另一半的邀请码" className="bg-[#FFECD9] border-0" />
                       </div>
                       <Button onClick={handleBindPartner} className="w-full bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white">
                         绑定伴侣
@@ -426,8 +413,7 @@ export default function Profile(props) {
 
           {/* 我的菜单 */}
           <div className="px-6 mb-6 animate-fadeIn" style={{
-        animationDelay: '0.4s'
-      }}>
+        animationDelay: '0.4s' }}>
 
             <Card className="bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-3xl">
               <CardHeader>
@@ -444,23 +430,23 @@ export default function Profile(props) {
               </CardHeader>
               <CardContent>
                 {showAddMenu && <div className="space-y-3 mb-4 p-4 bg-[#FFECD9] rounded-2xl">
-                    <Input value={newMenu.name} onChange={e => setNewMenu({
+                    <Input value={newMenu.name} onChange={(e) => setNewMenu({
                 ...newMenu,
-                name: e.target.value
-              })} placeholder="菜名" className="bg-white border-0" />
-                    <Input value={newMenu.tags} onChange={e => setNewMenu({
+                name: e.target.value })}
+              placeholder="菜名" className="bg-white border-0" />
+                    <Input value={newMenu.tags} onChange={(e) => setNewMenu({
                 ...newMenu,
-                tags: e.target.value
-              })} placeholder="标签（用逗号分隔）" className="bg-white border-0" />
+                tags: e.target.value })}
+              placeholder="标签（用逗号分隔）" className="bg-white border-0" />
                     <div className="flex gap-2">
-                      <Input value={newMenu.time} onChange={e => setNewMenu({
+                      <Input value={newMenu.time} onChange={(e) => setNewMenu({
                   ...newMenu,
-                  time: e.target.value
-                })} placeholder="用时（如：30分钟）" className="bg-white border-0 flex-1" />
-                      <select value={newMenu.difficulty} onChange={e => setNewMenu({
+                  time: e.target.value })}
+                placeholder="用时（如：30分钟）" className="bg-white border-0 flex-1" />
+                      <select value={newMenu.difficulty} onChange={(e) => setNewMenu({
                   ...newMenu,
-                  difficulty: e.target.value
-                })} className="bg-white border-0 rounded-lg px-3">
+                  difficulty: e.target.value })}
+                className="bg-white border-0 rounded-lg px-3">
                         <option value="简单">简单</option>
                         <option value="中等">中等</option>
                         <option value="困难">困难</option>
@@ -488,8 +474,7 @@ export default function Profile(props) {
 
           {/* 收到的消息 */}
           {communications.length > 0 && <div className="px-6 mb-6 animate-fadeIn" style={{
-        animationDelay: '0.5s'
-      }}>
+        animationDelay: '0.5s' }}>
 
               <Card className="bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-3xl">
                 <CardHeader>
@@ -511,11 +496,6 @@ export default function Profile(props) {
                 </CardContent>
               </Card>
             </div>}
-        </>
-      </div>
-      
-      {/* 底部导航栏 */}
-      <TabBar {...props} />
-    </div>
-  );
+        </>}
+    </div>;
 }
