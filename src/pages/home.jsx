@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const { $w } = props;const { toast } =
-  useToast();
-  const [menu, setMenu] = useState(null);
+import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const { $w } = props;const { toast } = useToast();const [menu, setMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState(null);
@@ -28,23 +26,23 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
   // 预设家常菜库
   // 预设家常菜库
   // 预设家常菜库
-  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟' }, { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟' }, {
-    name: '麻婆豆腐',
-    tags: ['川菜', '下饭'],
-    difficulty: '简单',
-    time: '20分钟' },
-  {
-    name: '糖醋排骨',
-    tags: ['酸甜', '经典'],
-    difficulty: '中等',
-    time: '40分钟' },
-  {
-    name: '蒜蓉西兰花',
-    tags: ['清淡', '健康'],
-    difficulty: '简单',
-    time: '8分钟' },
-  {
-    name: '宫保鸡丁',
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  // 预设家常菜库
+  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟' }, { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟' }, { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟' }, { name: '麻婆豆腐', tags: ['川菜', '下饭'], difficulty: '简单', time: '20分钟' }, { name: '糖醋排骨', tags: ['酸甜', '经典'], difficulty: '中等', time: '40分钟' }, { name: '蒜蓉西兰花', tags: ['清淡', '健康'], difficulty: '简单', time: '8分钟' }, { name: '宫保鸡丁',
     tags: ['川菜', '经典'],
     difficulty: '中等',
     time: '25分钟' },
@@ -131,7 +129,39 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
   // 俏皮话库
   // 俏皮话库
   // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
+  // 俏皮话库
   const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！']; // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
+  // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
@@ -163,6 +193,22 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
+    // 随机选择一句小情话
     const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setSweetMessage(randomMessage); // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
@@ -179,7 +225,39 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
+    // 随机选择一张每日图片
     const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];setDailyImage(randomImage);}, []);const loadUserInfo = async () => {try {const currentUser = $w.auth.currentUser;if (currentUser?.userId) {setUser(currentUser); // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
         // 查询用户剩余次数
@@ -212,8 +290,40 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
     // 检查剩余次数
     // 检查剩余次数
     // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
+    // 检查剩余次数
     if (remainingCount <= 0) {toast({ title: '今日生成次数已用完', description: '升级会员可无限生成菜单，仅需9.9元/月', variant: 'destructive' });return;}setLoading(true);try {// 模拟随机生成
       await new Promise((resolve) => setTimeout(resolve, 800));const randomIndex = Math.floor(Math.random() * menuDatabase.length);const selectedMenu = menuDatabase[randomIndex];const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setMenu({ ...selectedMenu, message: randomMessage, date: new Date().toISOString() });setIsLiked(false); // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
+      // 扣减次数
       // 扣减次数
       // 扣减次数
       // 扣减次数
@@ -245,7 +355,39 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
       // 检查是否已绑定关系
       // 检查是否已绑定关系
       // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
       const relationResult = await db.collection('cersay_bind_relations').where({ _openid: tcb.auth().currentUser?.openid }).get();if (relationResult.data.length === 0) {toast({ title: '还未绑定伴侣', description: '请先在"我的"页面绑定你的另一半~', variant: 'destructive' });return;} // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
+      // 保存到communications表
       // 保存到communications表
       // 保存到communications表
       // 保存到communications表
@@ -274,22 +416,18 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
       </div>
 
       {/* 每日精选图片 */}
-      <div className="px-6 mb-6 animate-fadeIn" style={{
-      animationDelay: '0.05s' }}>
+      <div className="px-6 mb-6 animate-fadeIn" style={{ animationDelay: '0.05s' }}>
 
           <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-sm">
-            <img src={dailyImage} alt="每日精选" className="w-full h-auto rounded-xl object-cover" style={{
-          minHeight: '200px',
-          maxHeight: '400px' }} />
+            <img src={dailyImage} alt="每日精选" className="w-full h-auto rounded-xl object-cover" style={{ minHeight: '200px', maxHeight: '400px' }} />
 
           </div>
         </div>
 
       {/* 剩余次数提示 */}
-      {user && <div className="px-6 mb-6 animate-fadeIn" style={{
-      animationDelay: '0.1s' }}>
+      {user && <div className="px-6 mb-6 animate-fadeIn" style={{ animationDelay: '0.1s' }}>
 
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-sm">
+          <div className="backdrop-blur-sm rounded-2xl p-4 shadow-sm bg-blue-50">
             <div className="flex items-center justify-between">
               <span className="text-[#636E72]">今日剩余生成次数</span>
               <span className="text-[#FF6B6B] font-bold text-lg">{remainingCount}次</span>
@@ -300,8 +438,7 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
 
       {/* 主操作区 */}
       <div className="px-6 bg-white">
-        <div className="flex justify-center mb-8 animate-fadeIn" style={{
-        animationDelay: '0.2s' }}>
+        <div className="flex justify-center mb-8 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
 
           <Button onClick={generateMenu} disabled={loading} className="from-[#FF9A8B] to-[#FF6B6B] hover:from-[#FF8A7B] hover:to-[#FF5A5A] text-white rounded-full px-12 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 button-hover bg-blue-700">
             {loading ? <RefreshCw className="w-6 h-6 animate-spin mr-2" /> : <Sparkles className="w-6 h-6 mr-2" />}
@@ -313,8 +450,7 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
         {menu && <div className="animate-fadeIn">
             <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0 rounded-3xl overflow-hidden card-shadow">
               <CardHeader className="bg-gradient-to-r from-[#FF9A8B]/10 to-[#FF6B6B]/10 pb-4">
-                <CardTitle className="text-2xl text-[#2D3436]" style={{
-              fontFamily: 'Noto Serif SC, serif' }}>
+                <CardTitle className="text-2xl text-[#2D3436]" style={{ fontFamily: 'Noto Serif SC, serif' }}>
 
                   {menu.name}
                 </CardTitle>
@@ -364,12 +500,10 @@ import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react'
           </div>}
 
         {/* 空状态提示 */}
-        {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{
-        animationDelay: '0.3s' }}>
+        {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
 
             <UtensilsCrossed className="w-16 h-16 mx-auto mb-4 text-blue-700" />
             <p className="text-[#636E72]">点击上方按钮，开始今天的美食之旅吧~</p>
           </div>}
       </div>
-    </div>;
-}
+    </div>;}
