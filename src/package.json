@@ -1,0 +1,30 @@
+{
+  "name": "queban-food-app",
+  "version": "1.0.0",
+  "description": "QueBan美食应用 - 智能菜单生成与分享平台",
+  "main": "App.jsx",
+  "scripts": {
+    "start": "echo 'Run in cloud environment'",
+    "build": "echo 'Build in cloud environment'",
+    "dev": "echo 'Development in cloud environment'"
+  },
+  "dependencies": {
+    "@cloudbase/js-sdk": "^1.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  },
+  "keywords": [
+    "food",
+    "menu",
+    "recipe",
+    "social",
+    "cloud"
+  ],
+  "author": "QueBan Team",
+  "license": "MIT"
+}
