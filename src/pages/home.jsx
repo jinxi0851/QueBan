@@ -5,6 +5,8 @@ import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/co
 // @ts-ignore;
 import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
 
+// @ts-ignore;
+import { FoodGallery } from '@/components/FoodGallery';
 export default function Home(props) {
   const {
     $w
@@ -263,7 +265,7 @@ export default function Home(props) {
   };
   return <div className="min-h-screen bg-gradient-to-br from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
       {/* 顶部欢迎区 */}
-      <div className="pt-12 pb-8 px-6 animate-fadeIn">
+      <div className="pt-12 pb-6 px-6 animate-fadeIn">
         <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
         fontFamily: 'Noto Serif SC, serif'
       }}>
@@ -273,6 +275,9 @@ export default function Home(props) {
           {sweetMessage}
         </p>
       </div>
+
+      {/* 美食图片展示栏 */}
+      <FoodGallery />
 
       {/* 剩余次数提示 */}
       {user && <div className="px-6 mb-6 animate-fadeIn" style={{
