@@ -13,7 +13,6 @@ export default function Home(props) {
   const {
     toast
   } = useToast();
-  const [activeTab, setActiveTab] = useState('home');
   const [menu, setMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -21,13 +20,6 @@ export default function Home(props) {
   const [remainingCount, setRemainingCount] = useState(5);
   const [sweetMessage, setSweetMessage] = useState('');
   const [dailyImage, setDailyImage] = useState('');
-  const handleTabChange = tabId => {
-    setActiveTab(tabId);
-    $w.utils.navigateTo({
-      pageId: tabId,
-      params: {}
-    });
-  };
 
   // 预设家常菜库
   // 预设家常菜库
@@ -2930,5 +2922,8 @@ export default function Home(props) {
             <p className="text-[#636E72]">点击上方按钮，开始今天的美食之旅吧~</p>
           </div>}
       </div>
+      
+      {/* 底部导航栏 */}
+      <TabBar {...props} />
     </div>;
 }
