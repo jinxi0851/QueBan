@@ -5,8 +5,6 @@ import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/co
 // @ts-ignore;
 import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
 
-// @ts-ignore;
-import { FoodGallery } from '@/components/FoodGallery';
 export default function Home(props) {
   const {
     $w
@@ -20,6 +18,7 @@ export default function Home(props) {
   const [user, setUser] = useState(null);
   const [remainingCount, setRemainingCount] = useState(5);
   const [sweetMessage, setSweetMessage] = useState('');
+  const [dailyImage, setDailyImage] = useState('');
 
   // 预设家常菜库
   const menuDatabase = [{
@@ -126,11 +125,17 @@ export default function Home(props) {
 
   // 俏皮话库
   const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！'];
+
+  // 每日精选图片库
+  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];
   useEffect(() => {
     loadUserInfo();
     // 随机选择一句小情话
     const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
     setSweetMessage(randomMessage);
+    // 随机选择一张每日图片
+    const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];
+    setDailyImage(randomImage);
   }, []);
   const loadUserInfo = async () => {
     try {
@@ -265,7 +270,7 @@ export default function Home(props) {
   };
   return <div className="min-h-screen bg-gradient-to-br from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
       {/* 顶部欢迎区 */}
-      <div className="pt-12 pb-6 px-6 animate-fadeIn">
+      <div className="pt-12 pb-8 px-6 animate-fadeIn">
         <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
         fontFamily: 'Noto Serif SC, serif'
       }}>
@@ -276,8 +281,17 @@ export default function Home(props) {
         </p>
       </div>
 
-      {/* 美食图片展示栏 */}
-      <FoodGallery />
+      {/* 每日精选图片 */}
+      <div className="px-6 mb-6 animate-fadeIn" style={{
+      animationDelay: '0.05s'
+    }}>
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-sm">
+            <img src={dailyImage} alt="每日精选" className="w-full h-auto rounded-xl object-cover" style={{
+          minHeight: '200px',
+          maxHeight: '400px'
+        }} />
+          </div>
+        </div>
 
       {/* 剩余次数提示 */}
       {user && <div className="px-6 mb-6 animate-fadeIn" style={{
