@@ -1,0 +1,67 @@
+{
+  "name": "user_avatars",
+  "title": "用户头像",
+  "schemas": [
+    {
+      "name": "userId",
+      "title": "用户ID",
+      "type": "String"
+    },
+    {
+      "name": "avatarUrl",
+      "title": "头像URL",
+      "type": "Image"
+    },
+    {
+      "name": "originalUrl",
+      "title": "原始头像URL",
+      "type": "Image"
+    },
+    {
+      "name": "thumbnailUrl",
+      "title": "缩略图URL",
+      "type": "Image"
+    },
+    {
+      "name": "uploadTime",
+      "title": "上传时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "fileSize",
+      "title": "文件大小",
+      "type": "Number"
+    },
+    {
+      "name": "fileType",
+      "title": "文件类型",
+      "type": "String"
+    },
+    {
+      "name": "width",
+      "title": "图片宽度",
+      "type": "Number"
+    },
+    {
+      "name": "height",
+      "title": "图片高度",
+      "type": "Number"
+    },
+    {
+      "name": "isActive",
+      "title": "是否启用",
+      "type": "Boolean"
+    },
+    {
+      "name": "uploadSource",
+      "title": "上传来源",
+      "type": "String"
+    },
+    {
+      "name": "description",
+      "title": "头像描述",
+      "type": "String"
+    }
+  ]
+}
