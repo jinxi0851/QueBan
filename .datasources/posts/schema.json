@@ -1,0 +1,42 @@
+{
+  "name": "posts",
+  "title": "广场帖子",
+  "schemas": [
+    {
+      "name": "menu",
+      "title": "菜单信息",
+      "type": "Object"
+    },
+    {
+      "name": "authorName",
+      "title": "作者名称",
+      "type": "String"
+    },
+    {
+      "name": "authorAvatar",
+      "title": "作者头像",
+      "type": "String"
+    },
+    {
+      "name": "likeCount",
+      "title": "点赞数",
+      "type": "Number"
+    },
+    {
+      "name": "commentCount",
+      "title": "评论数",
+      "type": "Number"
+    },
+    {
+      "name": "aiComment",
+      "title": "AI评论",
+      "type": "String"
+    },
+    {
+      "name": "createTime",
+      "title": "创建时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    }
+  ]
+}

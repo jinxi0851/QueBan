@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "like_001",
+    "postId": "post_001",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  },
+  {
+    "_id": "like_002",
+    "postId": "post_002",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "like_003",
+    "postId": "post_003",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  }
+]

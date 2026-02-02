@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "dish_001",
+    "name": "番茄炒蛋",
+    "difficulty": "简单",
+    "time": "10分钟",
+    "description": "酸甜可口，家常必备",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "dish_002",
+    "name": "红烧肉",
+    "difficulty": "中等",
+    "time": "45分钟",
+    "description": "肥而不腻，入口即化",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  },
+  {
+    "_id": "dish_003",
+    "name": "清蒸鲈鱼",
+    "difficulty": "简单",
+    "time": "15分钟",
+    "description": "清淡鲜美，营养丰富",
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_003",
+    "createBy": "user_003",
+    "updateBy": "user_003"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "name": "menu_generations",
+  "title": "菜单生成记录",
+  "schemas": [
+    {
+      "name": "menuId",
+      "title": "菜单ID",
+      "type": "String"
+    },
+    {
+      "name": "generationDate",
+      "title": "生成日期",
+      "type": "String"
+    },
+    {
+      "name": "generationTime",
+      "title": "生成时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "isShared",
+      "title": "是否已分享",
+      "type": "Boolean"
+    }
+  ]
+}

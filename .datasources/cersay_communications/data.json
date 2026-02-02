@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "comm_001",
+    "menu": {
+      "name": "番茄炒蛋",
+      "message": "今天辛苦啦，给你做顿好吃的~"
+    },
+    "toUserId": "user_002",
+    "isRead": false,
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "comm_002",
+    "menu": {
+      "name": "红烧肉",
+      "message": "这道菜超适合今天的你！"
+    },
+    "toUserId": "user_001",
+    "isRead": true,
+    "createTime": 1704067200000,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  }
+]

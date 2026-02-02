@@ -1,0 +1,47 @@
+{
+  "name": "menus",
+  "title": "菜单",
+  "schemas": [
+    {
+      "name": "name",
+      "title": "菜单名称",
+      "type": "String"
+    },
+    {
+      "name": "dishes",
+      "title": "菜品列表",
+      "type": "Array",
+      "items": {
+        "type": "Object"
+      }
+    },
+    {
+      "name": "tags",
+      "title": "标签",
+      "type": "Array",
+      "items": {
+        "type": "String"
+      }
+    },
+    {
+      "name": "totalTime",
+      "title": "总用时",
+      "type": "String"
+    },
+    {
+      "name": "message",
+      "title": "温馨话语",
+      "type": "String"
+    },
+    {
+      "name": "isShared",
+      "title": "是否已分享",
+      "type": "Boolean"
+    },
+    {
+      "name": "shareCount",
+      "title": "分享次数",
+      "type": "Number"
+    }
+  ]
+}

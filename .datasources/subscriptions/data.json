@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "sub_001",
+    "planId": 1,
+    "planName": "月度会员",
+    "price": 9.9,
+    "startDate": 1704067200000,
+    "endDate": 1706659200000,
+    "status": "active",
+    "paymentId": "pay_001",
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  }
+]

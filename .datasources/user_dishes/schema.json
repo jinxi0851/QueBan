@@ -1,0 +1,32 @@
+{
+  "name": "user_dishes",
+  "title": "用户拿手菜",
+  "schemas": [
+    {
+      "name": "name",
+      "title": "菜名",
+      "type": "String"
+    },
+    {
+      "name": "difficulty",
+      "title": "难度",
+      "type": "String"
+    },
+    {
+      "name": "time",
+      "title": "用时",
+      "type": "String"
+    },
+    {
+      "name": "description",
+      "title": "描述",
+      "type": "String"
+    },
+    {
+      "name": "createTime",
+      "title": "创建时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    }
+  ]
+}

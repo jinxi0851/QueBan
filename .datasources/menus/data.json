@@ -1,0 +1,104 @@
+[
+  {
+    "_id": "menu_001",
+    "name": "温馨家常套餐",
+    "dishes": [
+      {
+        "name": "番茄炒蛋",
+        "tags": ["家常", "快手"],
+        "difficulty": "简单",
+        "time": "10分钟"
+      },
+      {
+        "name": "蒜蓉西兰花",
+        "tags": ["清淡", "健康"],
+        "difficulty": "简单",
+        "time": "8分钟"
+      },
+      {
+        "name": "冬瓜排骨汤",
+        "tags": ["汤品", "营养"],
+        "difficulty": "简单",
+        "time": "1小时"
+      }
+    ],
+    "tags": ["家常", "营养", "温馨"],
+    "totalTime": "1小时20分钟",
+    "message": "今天辛苦啦，给你做顿好吃的~",
+    "isShared": false,
+    "shareCount": 0,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "menu_002",
+    "name": "经典下饭菜",
+    "dishes": [
+      {
+        "name": "红烧肉",
+        "tags": ["经典", "下饭"],
+        "difficulty": "中等",
+        "time": "45分钟"
+      },
+      {
+        "name": "麻婆豆腐",
+        "tags": ["川菜", "下饭"],
+        "difficulty": "简单",
+        "time": "20分钟"
+      },
+      {
+        "name": "白灼菜心",
+        "tags": ["清淡", "快手"],
+        "difficulty": "简单",
+        "time": "5分钟"
+      }
+    ],
+    "tags": ["经典", "下饭", "川菜"],
+    "totalTime": "1小时10分钟",
+    "message": "这道菜超适合今天的你！",
+    "isShared": true,
+    "shareCount": 3,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  },
+  {
+    "_id": "menu_003",
+    "name": "清淡营养套餐",
+    "dishes": [
+      {
+        "name": "清蒸鲈鱼",
+        "tags": ["清淡", "营养"],
+        "difficulty": "简单",
+        "time": "15分钟"
+      },
+      {
+        "name": "蒸蛋羹",
+        "tags": ["清淡", "营养"],
+        "difficulty": "简单",
+        "time": "10分钟"
+      },
+      {
+        "name": "清炒时蔬",
+        "tags": ["清淡", "健康"],
+        "difficulty": "简单",
+        "time": "8分钟"
+      }
+    ],
+    "tags": ["清淡", "营养", "健康"],
+    "totalTime": "35分钟",
+    "message": "为你准备的专属菜单，请查收~",
+    "isShared": false,
+    "shareCount": 0,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_003",
+    "createBy": "user_003",
+    "updateBy": "user_003"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "name": "favorites",
+  "title": "收藏记录",
+  "schemas": [
+    {
+      "name": "postId",
+      "title": "帖子ID",
+      "type": "String"
+    },
+    {
+      "name": "createTime",
+      "title": "收藏时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "cersay_bind_relations",
+  "title": "伴侣绑定关系",
+  "schemas": [
+    {
+      "name": "partnerId",
+      "title": "伴侣ID",
+      "type": "String"
+    },
+    {
+      "name": "partnerName",
+      "title": "伴侣名称",
+      "type": "String"
+    },
+    {
+      "name": "bindTime",
+      "title": "绑定时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    }
+  ]
+}

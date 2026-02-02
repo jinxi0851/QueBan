@@ -1,0 +1,46 @@
+{
+  "name": "users",
+  "title": "用户",
+  "schemas": [
+    {
+      "name": "nickName",
+      "title": "昵称",
+      "type": "String"
+    },
+    {
+      "name": "avatarUrl",
+      "title": "头像",
+      "type": "String"
+    },
+    {
+      "name": "vipLevel",
+      "title": "会员等级",
+      "type": "Number"
+    },
+    {
+      "name": "dailyMenuCount",
+      "title": "今日菜单生成次数",
+      "type": "Number"
+    },
+    {
+      "name": "dailyMenuLimit",
+      "title": "每日菜单生成限制",
+      "type": "Number"
+    },
+    {
+      "name": "lastMenuDate",
+      "title": "最后生成菜单日期",
+      "type": "String"
+    },
+    {
+      "name": "inviteCode",
+      "title": "邀请码",
+      "type": "String"
+    },
+    {
+      "name": "totalMenusGenerated",
+      "title": "总生成菜单数",
+      "type": "Number"
+    }
+  ]
+}

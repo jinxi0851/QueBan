@@ -1,0 +1,43 @@
+{
+  "name": "subscriptions",
+  "title": "会员订阅",
+  "schemas": [
+    {
+      "name": "planId",
+      "title": "套餐ID",
+      "type": "Number"
+    },
+    {
+      "name": "planName",
+      "title": "套餐名称",
+      "type": "String"
+    },
+    {
+      "name": "price",
+      "title": "价格",
+      "type": "Number"
+    },
+    {
+      "name": "startDate",
+      "title": "开始日期",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "endDate",
+      "title": "结束日期",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    },
+    {
+      "name": "status",
+      "title": "状态",
+      "type": "String"
+    },
+    {
+      "name": "paymentId",
+      "title": "支付ID",
+      "type": "String"
+    }
+  ]
+}

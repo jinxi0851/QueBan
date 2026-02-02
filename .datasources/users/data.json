@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "user_001",
+    "nickName": "小美",
+    "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+    "vipLevel": 0,
+    "dailyMenuCount": 0,
+    "dailyMenuLimit": 10,
+    "lastMenuDate": "",
+    "inviteCode": "ABC123",
+    "totalMenusGenerated": 0,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "user_002",
+    "nickName": "大厨阿强",
+    "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka",
+    "vipLevel": 1,
+    "dailyMenuCount": 0,
+    "dailyMenuLimit": -1,
+    "lastMenuDate": "",
+    "inviteCode": "DEF456",
+    "totalMenusGenerated": 25,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  },
+  {
+    "_id": "user_003",
+    "nickName": "健康达人",
+    "avatarUrl": "https://api.dicebear.com/7.x/avataaars/svg?seed=Leo",
+    "vipLevel": 0,
+    "dailyMenuCount": 3,
+    "dailyMenuLimit": 10,
+    "lastMenuDate": "2026-02-02",
+    "inviteCode": "GHI789",
+    "totalMenusGenerated": 8,
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_003",
+    "createBy": "user_003",
+    "updateBy": "user_003"
+  }
+]

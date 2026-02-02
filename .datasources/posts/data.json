@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "post_001",
+    "menu": {
+      "name": "番茄炒蛋",
+      "tags": ["家常", "快手"],
+      "difficulty": "简单",
+      "time": "10分钟",
+      "message": "今天辛苦啦，给你做顿好吃的~"
+    },
+    "authorName": "小美",
+    "authorAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+    "likeCount": 128,
+    "commentCount": 23,
+    "createTime": 1704067200000,
+    "aiComment": "这道菜简单又营养，番茄的酸甜配上嫩滑的鸡蛋，简直是绝配！适合忙碌的工作日快速准备~",
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_001",
+    "createBy": "user_001",
+    "updateBy": "user_001"
+  },
+  {
+    "_id": "post_002",
+    "menu": {
+      "name": "红烧肉",
+      "tags": ["经典", "下饭"],
+      "difficulty": "中等",
+      "time": "45分钟",
+      "message": "这道菜超适合今天的你！"
+    },
+    "authorName": "大厨阿强",
+    "authorAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka",
+    "likeCount": 256,
+    "commentCount": 45,
+    "createTime": 1704067200000,
+    "aiComment": "红烧肉是中华料理的经典！肥而不腻，入口即化，配上热腾腾的米饭，幸福感满满~",
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_002",
+    "createBy": "user_002",
+    "updateBy": "user_002"
+  },
+  {
+    "_id": "post_003",
+    "menu": {
+      "name": "清蒸鲈鱼",
+      "tags": ["清淡", "营养"],
+      "difficulty": "简单",
+      "time": "15分钟",
+      "message": "为你准备的专属菜单，请查收~"
+    },
+    "authorName": "健康达人",
+    "authorAvatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Leo",
+    "likeCount": 89,
+    "commentCount": 12,
+    "createTime": 1704067200000,
+    "aiComment": "清蒸鲈鱼保留了鱼肉的鲜美，低脂高蛋白，是健康饮食的绝佳选择！",
+    "createdAt": 1704067200000,
+    "updatedAt": 1704067200000,
+    "owner": "user_003",
+    "createBy": "user_003",
+    "updateBy": "user_003"
+  }
+]

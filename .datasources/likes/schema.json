@@ -1,0 +1,17 @@
+{
+  "name": "likes",
+  "title": "点赞记录",
+  "schemas": [
+    {
+      "name": "postId",
+      "title": "帖子ID",
+      "type": "String"
+    },
+    {
+      "name": "createTime",
+      "title": "点赞时间",
+      "type": "DateTime",
+      "format": "timestamp-ms"
+    }
+  ]
+}
