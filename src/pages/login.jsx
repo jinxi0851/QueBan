@@ -14,6 +14,12 @@ export default function Login(props) {
   } = useToast();
   const [loading, setLoading] = useState(false);
   const [redirectUrl, setRedirectUrl] = useState('');
+  const [loginMethod, setLoginMethod] = useState('wechat'); // 'wechat' | 'sms'
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [verificationInfo, setVerificationInfo] = useState(null);
+  const [countdown, setCountdown] = useState(0);
+  const [smsLoading, setSmsLoading] = useState(false);
   useEffect(() => {
     // 获取跳转参数
     const params = $w.page.dataset.params || {};
@@ -21,6 +27,7 @@ export default function Login(props) {
       setRedirectUrl(params.redirect);
     }
   }, []);
+  // 微信登录
   const handleWechatLogin = async () => {
     setLoading(true);
     try {
@@ -42,6 +49,111 @@ export default function Login(props) {
         description: '请稍后重试',
         variant: 'destructive'
       });
+      setLoading(false);
+    }
+  };
+
+  // 获取短信验证码
+  const handleGetVerificationCode = async () => {
+    if (!phoneNumber || !/^1[3-9]\d{9}$/.test(phoneNumber)) {
+      toast({
+        title: '请输入正确的手机号',
+        variant: 'destructive'
+      });
+      return;
+    }
+    setSmsLoading(true);
+    try {
+      const result = await $w.cloud.callFunction({
+        name: 'smsAuth',
+        data: {
+          action: 'getVerification',
+          phoneNumber: `+86 ${phoneNumber}`
+        }
+      });
+      if (result.result.success) {
+        setVerificationInfo(result.result.verificationInfo);
+        setCountdown(60);
+        toast({
+          title: '验证码发送成功',
+          description: '请查看手机短信'
+        });
+
+        // 开始倒计时
+        const timer = setInterval(() => {
+          setCountdown(prev => {
+            if (prev <= 1) {
+              clearInterval(timer);
+              return 0;
+            }
+            return prev - 1;
+          });
+        }, 1000);
+      } else {
+        throw new Error(result.result.error);
+      }
+    } catch (error) {
+      console.error('获取验证码失败:', error);
+      toast({
+        title: '获取验证码失败',
+        description: error.message || '请稍后重试',
+        variant: 'destructive'
+      });
+    } finally {
+      setSmsLoading(false);
+    }
+  };
+
+  // 短信验证码登录
+  const handleSmsLogin = async () => {
+    if (!verificationCode || verificationCode.length !== 6) {
+      toast({
+        title: '请输入6位验证码',
+        variant: 'destructive'
+      });
+      return;
+    }
+    setLoading(true);
+    try {
+      const result = await $w.cloud.callFunction({
+        name: 'smsAuth',
+        data: {
+          action: 'signInWithSms',
+          phoneNumber: `+86 ${phoneNumber}`,
+          verificationCode,
+          verificationInfo
+        }
+      });
+      if (result.result.success) {
+        // 刷新用户信息
+        await $w.auth.getUserInfo({
+          force: true
+        });
+        toast({
+          title: '登录成功',
+          description: '欢迎回来！'
+        });
+
+        // 跳转到指定页面
+        if (redirectUrl) {
+          window.location.href = redirectUrl;
+        } else {
+          $w.utils.navigateTo({
+            pageId: 'home',
+            params: {}
+          });
+        }
+      } else {
+        throw new Error(result.result.error);
+      }
+    } catch (error) {
+      console.error('登录失败:', error);
+      toast({
+        title: '登录失败',
+        description: error.message || '验证码错误，请重试',
+        variant: 'destructive'
+      });
+    } finally {
       setLoading(false);
     }
   };
@@ -88,23 +200,63 @@ export default function Login(props) {
           </div>
         </div>
 
-        {/* 登录方式 */}
-        <div className="space-y-4 animate-fadeIn" style={{
+        {/* 登录方式切换 */}
+        <div className="flex bg-white/40 backdrop-blur-sm rounded-2xl p-1 mb-6 animate-fadeIn" style={{
         animationDelay: '0.1s'
       }}>
-          {/* 微信一键登录 */}
-          <Button onClick={handleWechatLogin} disabled={loading} className="w-full bg-[#07C160] hover:bg-[#06AD56] text-white rounded-2xl py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
-            {loading ? <>
-                <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
-                登录中...
-              </> : <>
-                <Smartphone className="w-6 h-6 mr-3" />
-                微信一键登录
-              </>}
-          </Button>
+          <button onClick={() => setLoginMethod('wechat')} className={`flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 ${loginMethod === 'wechat' ? 'bg-white text-[#2D3436] shadow-md' : 'text-[#636E72] hover:text-[#2D3436]'}`}>
+            微信登录
+          </button>
+          <button onClick={() => setLoginMethod('sms')} className={`flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 ${loginMethod === 'sms' ? 'bg-white text-[#2D3436] shadow-md' : 'text-[#636E72] hover:text-[#2D3436]'}`}>
+            短信登录
+          </button>
+        </div>
+
+        {/* 登录方式 */}
+        <div className="space-y-4 animate-fadeIn" style={{
+        animationDelay: '0.2s'
+      }}>
+          {loginMethod === 'wechat' ? (/* 微信一键登录 */
+        <Button onClick={handleWechatLogin} disabled={loading} className="w-full bg-[#07C160] hover:bg-[#06AD56] text-white rounded-2xl py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+              {loading ? <>
+                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
+                  登录中...
+                </> : <>
+                  <Smartphone className="w-6 h-6 mr-3" />
+                  微信一键登录
+                </>}
+            </Button>) : (/* 短信验证码登录 */
+        <div className="space-y-4">
+              {/* 手机号输入 */}
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4">
+                <label className="block text-[#2D3436] font-medium mb-2">手机号</label>
+                <input type="tel" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder="请输入手机号" className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-[#FF6B6B] focus:ring-2 focus:ring-[#FF6B6B]/20 outline-none transition-all duration-300" maxLength={11} />
+              </div>
+
+              {/* 验证码输入 */}
+              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4">
+                <label className="block text-[#2D3436] font-medium mb-2">验证码</label>
+                <div className="flex space-x-3">
+                  <input type="text" value={verificationCode} onChange={e => setVerificationCode(e.target.value.replace(/\D/g, '').slice(0, 6))} placeholder="请输入验证码" className="flex-1 px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-[#FF6B6B] focus:ring-2 focus:ring-[#FF6B6B]/20 outline-none transition-all duration-300" maxLength={6} />
+                  <Button onClick={handleGetVerificationCode} disabled={smsLoading || countdown > 0 || !phoneNumber} variant="outline" className="px-6 py-3 border-[#FF6B6B] text-[#FF6B6B] hover:bg-[#FF6B6B] hover:text-white rounded-xl transition-all duration-300">
+                    {smsLoading ? '发送中...' : countdown > 0 ? `${countdown}s` : '获取验证码'}
+                  </Button>
+                </div>
+              </div>
+
+              {/* 登录按钮 */}
+              <Button onClick={handleSmsLogin} disabled={loading || !verificationCode || !phoneNumber} className="w-full bg-[#FF6B6B] hover:bg-[#FF5252] text-white rounded-2xl py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+                {loading ? <>
+                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3"></div>
+                    登录中...
+                  </> : '登录'}
+              </Button>
+            </div>)}
 
           {/* 功能说明 */}
-          <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 mt-8">
+          <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 mt-8 animate-fadeIn" style={{
+          animationDelay: '0.3s'
+        }}>
             <h3 className="text-[#2D3436] font-semibold mb-4 flex items-center">
               <Sparkles className="w-5 h-5 mr-2 text-[#FF6B6B]" />
               登录后享受
