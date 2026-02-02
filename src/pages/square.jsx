@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const {
-    $w } =
-  props;
+import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;
   const {
     toast } =
   useToast();
@@ -40,11 +38,11 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 使用虚拟数据
       // 使用虚拟数据
       // 使用虚拟数据
-      setPosts(getMockPosts());} finally {setLoading(false);}
-  };
-  const getMockPosts = () => {
-    return [{
-      _id: '1',
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1',
       menu: {
         name: '番茄炒蛋',
         tags: ['家常', '快手'],
@@ -137,12 +135,12 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 检查是否已点赞
       // 检查是否已点赞
       // 检查是否已点赞
-      const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();
-      if (existingLike.data.length > 0) {
-        // 取消点赞
-        await db.collection('likes').where({
-          postId: postId,
-          _openid: tcb.auth().currentUser?.openid }).
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();if (existingLike.data.length > 0) {// 取消点赞
+        await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).
         remove();
         await db.collection('posts').doc(postId).update({
           likeCount: posts.find((p) => p._id === postId).likeCount - 1 });
@@ -238,7 +236,7 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       </div>
 
       {/* 帖子列表 */}
-      <div className="px-6 space-y-4 bg-white">
+      <div className="px-6 space-y-4 bg-blue-100">
         {loading ? <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FF9A8B] mx-auto"></div>
             <p className="text-[#636E72] mt-4">加载中...</p>
