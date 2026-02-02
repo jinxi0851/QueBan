@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;const { toast } = useToast();const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('hot');
+import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-react';export default function Square(props) {const { $w } = props;const { toast } = useToast();const [posts, setPosts] = useState([]);const [loading, setLoading] = useState(true);const [activeTab, setActiveTab] = useState('hot');
   useEffect(() => {
     loadPosts();
   }, [activeTab]);
@@ -62,39 +60,39 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 使用虚拟数据
       // 使用虚拟数据
       // 使用虚拟数据
-      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1', menu: { name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟', message: '今天辛苦啦，给你做顿好吃的~' }, authorName: '小美', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix', likeCount: 128, commentCount: 23, createTime: new Date(Date.now() - 3600000).toISOString(), aiComment: '这道菜简单又营养，番茄的酸甜配上嫩滑的鸡蛋，简直是绝配！适合忙碌的工作日快速准备~' }, { _id: '2', menu: { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟', message: '这道菜超适合今天的你！' }, authorName: '大厨阿强', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka',
-      likeCount: 256,
-      commentCount: 45,
-      createTime: new Date(Date.now() - 7200000).toISOString(),
-      aiComment: '红烧肉是中华料理的经典！肥而不腻，入口即化，配上热腾腾的米饭，幸福感满满~' },
-    {
-      _id: '3',
-      menu: {
-        name: '清蒸鲈鱼',
-        tags: ['清淡', '营养'],
-        difficulty: '简单',
-        time: '15分钟',
-        message: '为你准备的专属菜单，请查收~' },
-
-      authorName: '健康达人',
-      authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Leo',
-      likeCount: 89,
-      commentCount: 12,
-      createTime: new Date(Date.now() - 10800000).toISOString(),
-      aiComment: '清蒸鲈鱼保留了鱼肉的鲜美，低脂高蛋白，是健康饮食的绝佳选择！' },
-    {
-      _id: '4',
-      menu: {
-        name: '麻婆豆腐',
-        tags: ['川菜', '下饭'],
-        difficulty: '简单',
-        time: '20分钟',
-        message: '吃饭啦吃饭啦，不许挑食哦~' },
-
-      authorName: '川菜爱好者',
-      authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Max',
-      likeCount: 167,
-      commentCount: 34,
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      // 使用虚拟数据
+      setPosts(getMockPosts());} finally {setLoading(false);}};const getMockPosts = () => {return [{ _id: '1', menu: { name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单', time: '10分钟', message: '今天辛苦啦，给你做顿好吃的~' }, authorName: '小美', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix', likeCount: 128, commentCount: 23, createTime: new Date(Date.now() - 3600000).toISOString(), aiComment: '这道菜简单又营养，番茄的酸甜配上嫩滑的鸡蛋，简直是绝配！适合忙碌的工作日快速准备~' }, { _id: '2', menu: { name: '红烧肉', tags: ['经典', '下饭'], difficulty: '中等', time: '45分钟', message: '这道菜超适合今天的你！' }, authorName: '大厨阿强', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka', likeCount: 256, commentCount: 45, createTime: new Date(Date.now() - 7200000).toISOString(), aiComment: '红烧肉是中华料理的经典！肥而不腻，入口即化，配上热腾腾的米饭，幸福感满满~' }, { _id: '3', menu: { name: '清蒸鲈鱼', tags: ['清淡', '营养'], difficulty: '简单', time: '15分钟', message: '为你准备的专属菜单，请查收~' }, authorName: '健康达人', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Leo', likeCount: 89, commentCount: 12, createTime: new Date(Date.now() - 10800000).toISOString(), aiComment: '清蒸鲈鱼保留了鱼肉的鲜美，低脂高蛋白，是健康饮食的绝佳选择！' }, { _id: '4', menu: { name: '麻婆豆腐', tags: ['川菜', '下饭'], difficulty: '简单', time: '20分钟', message: '吃饭啦吃饭啦，不许挑食哦~' }, authorName: '川菜爱好者', authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Max', likeCount: 167, commentCount: 34,
       createTime: new Date(Date.now() - 14400000).toISOString(),
       aiComment: '麻婆豆腐麻辣鲜香，豆腐嫩滑，是下饭神器！记得多准备点米饭哦~' },
     {
@@ -159,41 +157,41 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       // 检查是否已点赞
       // 检查是否已点赞
       // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
+      // 检查是否已点赞
       const existingLike = await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).get();if (existingLike.data.length > 0) {// 取消点赞
         await db.collection('likes').where({ postId: postId, _openid: tcb.auth().currentUser?.openid }).remove();await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount - 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount - 1 } : p));toast({ title: '已取消点赞' });} else {// 点赞
-        await db.collection('likes').add({ postId: postId, createTime: new Date().toISOString() });await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount + 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount + 1 } : p));toast({
-          title: '点赞成功！' });
-
-      }
-    } catch (error) {
-      console.error('点赞失败:', error);
-      toast({
-        title: '操作失败',
-        description: '请稍后重试',
-        variant: 'destructive' });
-
-    }
-  };
-  const handleCollect = async (postId) => {
-    if (!$w.auth.currentUser?.userId) {
-      toast({
-        title: '请先登录',
-        description: '登录后才能收藏哦~',
-        variant: 'destructive' });
-
-      return;
-    }
-    toast({
-      title: '收藏成功！' });
-
-  };
-  const formatTime = (timeString) => {
-    const now = new Date();
-    const time = new Date(timeString);
-    const diff = now - time;
-    const hours = Math.floor(diff / 3600000);
-    if (hours < 1) {
-      const minutes = Math.floor(diff / 60000);
+        await db.collection('likes').add({ postId: postId, createTime: new Date().toISOString() });await db.collection('posts').doc(postId).update({ likeCount: posts.find((p) => p._id === postId).likeCount + 1 });setPosts(posts.map((p) => p._id === postId ? { ...p, likeCount: p.likeCount + 1 } : p));toast({ title: '点赞成功！' });}} catch (error) {console.error('点赞失败:', error);toast({ title: '操作失败', description: '请稍后重试', variant: 'destructive' });}};const handleCollect = async (postId) => {if (!$w.auth.currentUser?.userId) {toast({ title: '请先登录', description: '登录后才能收藏哦~', variant: 'destructive' });return;}toast({ title: '收藏成功！' });};const formatTime = (timeString) => {const now = new Date();const time = new Date(timeString);const diff = now - time;const hours = Math.floor(diff / 3600000);if (hours < 1) {const minutes = Math.floor(diff / 60000);
       return `${minutes}分钟前`;
     } else if (hours < 24) {
       return `${hours}小时前`;
@@ -202,7 +200,7 @@ import { Heart, MessageCircle, Bookmark, Share2, Flame, Clock } from 'lucide-rea
       return `${days}天前`;
     }
   };
-  return <div className="min-h-screen bg-gradient-to-br from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
+  return <div className="min-h-screen from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24 bg-blue-100">
       {/* 顶部标题 */}
       <div className="pt-12 pb-6 px-6 animate-fadeIn bg-sky-100">
         <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
