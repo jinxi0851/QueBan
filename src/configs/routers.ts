@@ -1,6 +1,7 @@
 import HOME from '../pages/home.jsx';
 import SQUARE from '../pages/square.jsx';
 import PROFILE from '../pages/profile.jsx';
+import LOGIN from '../pages/login.jsx';
 export const routers = [{
   id: "home",
   component: HOME
@@ -10,4 +11,7 @@ export const routers = [{
 }, {
   id: "profile",
   component: PROFILE
+}, {
+  id: "login",
+  component: LOGIN
 }]
