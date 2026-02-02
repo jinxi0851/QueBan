@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 // @ts-ignore;
 import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui'; // @ts-ignore;
-import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
-export default function Home(props) {
-  const {
+import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';export default function Home(props) {const {
     $w } =
   props;
   const {
@@ -20,9 +18,9 @@ export default function Home(props) {
 
   // 预设家常菜库
   // 预设家常菜库
-  const menuDatabase = [{ name: '番茄炒蛋',
-    tags: ['家常', '快手'],
-    difficulty: '简单',
+  // 预设家常菜库
+  // 预设家常菜库
+  const menuDatabase = [{ name: '番茄炒蛋', tags: ['家常', '快手'], difficulty: '简单',
     time: '10分钟' },
   {
     name: '红烧肉',
@@ -123,28 +121,28 @@ export default function Home(props) {
 
   // 俏皮话库
   // 俏皮话库
-  const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！'];
+  // 俏皮话库
+  // 俏皮话库
+  const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！']; // 每日精选图片库
   // 每日精选图片库
   // 每日精选图片库
-  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];useEffect(() => {
-    loadUserInfo();
+  // 每日精选图片库
+  const dailyImages = ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800', 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800', 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800', 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800', 'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800', 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800', 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800', 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800'];useEffect(() => {loadUserInfo(); // 随机选择一句小情话
     // 随机选择一句小情话
     // 随机选择一句小情话
-    const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setSweetMessage(randomMessage);
+    // 随机选择一句小情话
+    const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];setSweetMessage(randomMessage); // 随机选择一张每日图片
     // 随机选择一张每日图片
     // 随机选择一张每日图片
-    const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];setDailyImage(randomImage);
-  }, []);
-  const loadUserInfo = async () => {
-    try {
-      const currentUser = $w.auth.currentUser;
+    // 随机选择一张每日图片
+    const randomImage = dailyImages[Math.floor(Math.random() * dailyImages.length)];setDailyImage(randomImage);}, []);const loadUserInfo = async () => {try {const currentUser = $w.auth.currentUser;
       if (currentUser?.userId) {
         setUser(currentUser);
         // 查询用户剩余次数
         // 查询用户剩余次数
-        const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();
-        const result = await db.collection('users').where({
-          _openid: tcb.auth().currentUser?.openid }).
+        // 查询用户剩余次数
+        // 查询用户剩余次数
+        const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();const result = await db.collection('users').where({ _openid: tcb.auth().currentUser?.openid }).
         get();
         if (result.data.length > 0) {
           setRemainingCount(result.data[0].remainingCount || 5);
@@ -167,9 +165,9 @@ export default function Home(props) {
 
     // 检查剩余次数
     // 检查剩余次数
-    if (remainingCount <= 0) {toast({
-        title: '今日生成次数已用完',
-        description: '升级会员可无限生成菜单，仅需9.9元/月',
+    // 检查剩余次数
+    // 检查剩余次数
+    if (remainingCount <= 0) {toast({ title: '今日生成次数已用完', description: '升级会员可无限生成菜单，仅需9.9元/月',
         variant: 'destructive' });
 
       return;
@@ -190,9 +188,9 @@ export default function Home(props) {
 
       // 扣减次数
       // 扣减次数
-      const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();
-      await db.collection('users').where({
-        _openid: tcb.auth().currentUser?.openid }).
+      // 扣减次数
+      // 扣减次数
+      const tcb = await $w.cloud.getCloudInstance();const db = tcb.database();await db.collection('users').where({ _openid: tcb.auth().currentUser?.openid }).
       update({
         remainingCount: remainingCount - 1 });
 
@@ -234,9 +232,9 @@ export default function Home(props) {
 
       // 检查是否已绑定关系
       // 检查是否已绑定关系
-      const relationResult = await db.collection('cersay_bind_relations').where({ _openid: tcb.auth().currentUser?.openid }).
-      get();
-      if (relationResult.data.length === 0) {
+      // 检查是否已绑定关系
+      // 检查是否已绑定关系
+      const relationResult = await db.collection('cersay_bind_relations').where({ _openid: tcb.auth().currentUser?.openid }).get();if (relationResult.data.length === 0) {
         toast({
           title: '还未绑定伴侣',
           description: '请先在"我的"页面绑定你的另一半~',
@@ -247,9 +245,9 @@ export default function Home(props) {
 
       // 保存到communications表
       // 保存到communications表
-      await db.collection('cersay_communications').add({ menu: menu,
-        fromUserId: $w.auth.currentUser.userId,
-        toUserId: relationResult.data[0].partnerId,
+      // 保存到communications表
+      // 保存到communications表
+      await db.collection('cersay_communications').add({ menu: menu, fromUserId: $w.auth.currentUser.userId, toUserId: relationResult.data[0].partnerId,
         createTime: new Date().toISOString(),
         isRead: false });
 
@@ -305,7 +303,7 @@ export default function Home(props) {
         </div>}
 
       {/* 主操作区 */}
-      <div className="px-6">
+      <div className="px-6 bg-white">
         <div className="flex justify-center mb-8 animate-fadeIn" style={{
         animationDelay: '0.2s' }}>
 
