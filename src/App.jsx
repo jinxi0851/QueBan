@@ -1,14 +1,17 @@
 // @ts-ignore;
 import React, { useState, useEffect } from 'react';
+// @ts-ignore;
+import { TabBar } from '@/components/ui';
 
 import Home from './pages/home';
 import Square from './pages/square';
 import Profile from './pages/profile';
 import Login from './pages/login';
 import MyDishes from './pages/my-dishes';
-import TabBar from './components/TabBar';
+import SideNav from './components/SideNav';
 export default function App(props) {
   const [activeTab, setActiveTab] = useState('home');
+  const [isSideNavOpen, setIsSideNavOpen] = useState(false);
   const renderPage = () => {
     // 检查是否是登录页面
     if (props.$w?.page?.dataset?.params?.pageId === 'login') {
@@ -35,6 +38,6 @@ export default function App(props) {
   const isMyDishesPage = props.$w?.page?.dataset?.params?.pageId === 'my-dishes';
   return <div className="min-h-screen">
       {renderPage()}
-      {!isLoginPage && !isMyDishesPage && <TabBar activeTab={activeTab} onTabChange={setActiveTab} />}
+      {!isLoginPage && !isMyDishesPage && <SideNav activeTab={activeTab} onTabChange={setActiveTab} isOpen={isSideNavOpen} onToggle={() => setIsSideNavOpen(!isSideNavOpen)} />}
     </div>;
 }
