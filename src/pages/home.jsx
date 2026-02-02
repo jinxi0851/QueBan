@@ -1,0 +1,360 @@
+// @ts-ignore;
+import React, { useState, useEffect } from 'react';
+// @ts-ignore;
+import { useToast, Button, Card, CardContent, CardHeader, CardTitle } from '@/components/ui';
+// @ts-ignore;
+import { RefreshCw, Heart, Send, Sparkles, UtensilsCrossed } from 'lucide-react';
+
+export default function Home(props) {
+  const {
+    $w
+  } = props;
+  const {
+    toast
+  } = useToast();
+  const [menu, setMenu] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState(null);
+  const [remainingCount, setRemainingCount] = useState(5);
+
+  // 预设家常菜库
+  const menuDatabase = [{
+    name: '番茄炒蛋',
+    tags: ['家常', '快手'],
+    difficulty: '简单',
+    time: '10分钟'
+  }, {
+    name: '红烧肉',
+    tags: ['经典', '下饭'],
+    difficulty: '中等',
+    time: '45分钟'
+  }, {
+    name: '清蒸鲈鱼',
+    tags: ['清淡', '营养'],
+    difficulty: '简单',
+    time: '15分钟'
+  }, {
+    name: '麻婆豆腐',
+    tags: ['川菜', '下饭'],
+    difficulty: '简单',
+    time: '20分钟'
+  }, {
+    name: '糖醋排骨',
+    tags: ['酸甜', '经典'],
+    difficulty: '中等',
+    time: '40分钟'
+  }, {
+    name: '蒜蓉西兰花',
+    tags: ['清淡', '健康'],
+    difficulty: '简单',
+    time: '8分钟'
+  }, {
+    name: '宫保鸡丁',
+    tags: ['川菜', '经典'],
+    difficulty: '中等',
+    time: '25分钟'
+  }, {
+    name: '冬瓜排骨汤',
+    tags: ['汤品', '营养'],
+    difficulty: '简单',
+    time: '1小时'
+  }, {
+    name: '鱼香肉丝',
+    tags: ['川菜', '下饭'],
+    difficulty: '中等',
+    time: '20分钟'
+  }, {
+    name: '白灼菜心',
+    tags: ['清淡', '快手'],
+    difficulty: '简单',
+    time: '5分钟'
+  }, {
+    name: '可乐鸡翅',
+    tags: ['创意', '下饭'],
+    difficulty: '简单',
+    time: '30分钟'
+  }, {
+    name: '酸辣土豆丝',
+    tags: ['家常', '快手'],
+    difficulty: '简单',
+    time: '10分钟'
+  }, {
+    name: '青椒肉丝',
+    tags: ['家常', '下饭'],
+    difficulty: '简单',
+    time: '15分钟'
+  }, {
+    name: '蒸蛋羹',
+    tags: ['清淡', '营养'],
+    difficulty: '简单',
+    time: '10分钟'
+  }, {
+    name: '回锅肉',
+    tags: ['川菜', '经典'],
+    difficulty: '中等',
+    time: '25分钟'
+  }, {
+    name: '凉拌黄瓜',
+    tags: ['凉菜', '快手'],
+    difficulty: '简单',
+    time: '5分钟'
+  }, {
+    name: '红烧茄子',
+    tags: ['下饭', '经典'],
+    difficulty: '中等',
+    time: '30分钟'
+  }, {
+    name: '清炒时蔬',
+    tags: ['清淡', '健康'],
+    difficulty: '简单',
+    time: '8分钟'
+  }, {
+    name: '水煮肉片',
+    tags: ['川菜', '下饭'],
+    difficulty: '中等',
+    time: '30分钟'
+  }, {
+    name: '蛋炒饭',
+    tags: ['快手', '主食'],
+    difficulty: '简单',
+    time: '10分钟'
+  }];
+
+  // 俏皮话库
+  const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！'];
+  useEffect(() => {
+    loadUserInfo();
+  }, []);
+  const loadUserInfo = async () => {
+    try {
+      const currentUser = $w.auth.currentUser;
+      if (currentUser?.userId) {
+        setUser(currentUser);
+        // 查询用户剩余次数
+        const tcb = await $w.cloud.getCloudInstance();
+        const db = tcb.database();
+        const result = await db.collection('users').where({
+          _openid: tcb.auth().currentUser?.openid
+        }).get();
+        if (result.data.length > 0) {
+          setRemainingCount(result.data[0].remainingCount || 5);
+        }
+      }
+    } catch (error) {
+      console.error('加载用户信息失败:', error);
+    }
+  };
+  const generateMenu = async () => {
+    // 检查登录状态
+    if (!$w.auth.currentUser?.userId) {
+      toast({
+        title: '请先登录',
+        description: '登录后才能使用菜单生成功能哦~',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    // 检查剩余次数
+    if (remainingCount <= 0) {
+      toast({
+        title: '今日生成次数已用完',
+        description: '升级会员可无限生成菜单，仅需9.9元/月',
+        variant: 'destructive'
+      });
+      return;
+    }
+    setLoading(true);
+    try {
+      // 模拟随机生成
+      await new Promise(resolve => setTimeout(resolve, 800));
+      const randomIndex = Math.floor(Math.random() * menuDatabase.length);
+      const selectedMenu = menuDatabase[randomIndex];
+      const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
+      setMenu({
+        ...selectedMenu,
+        message: randomMessage,
+        date: new Date().toISOString()
+      });
+      setIsLiked(false);
+
+      // 扣减次数
+      const tcb = await $w.cloud.getCloudInstance();
+      const db = tcb.database();
+      await db.collection('users').where({
+        _openid: tcb.auth().currentUser?.openid
+      }).update({
+        remainingCount: remainingCount - 1
+      });
+      setRemainingCount(remainingCount - 1);
+      toast({
+        title: '菜单生成成功！',
+        description: '快看看今天吃什么吧~'
+      });
+    } catch (error) {
+      console.error('生成菜单失败:', error);
+      toast({
+        title: '生成失败',
+        description: '请稍后重试',
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+    toast({
+      title: isLiked ? '已取消收藏' : '已收藏',
+      description: isLiked ? '这道菜已从收藏中移除' : '这道菜已加入收藏'
+    });
+  };
+  const handleSendToPartner = async () => {
+    if (!$w.auth.currentUser?.userId) {
+      toast({
+        title: '请先登录',
+        description: '登录后才能发送菜单给TA哦~',
+        variant: 'destructive'
+      });
+      return;
+    }
+    try {
+      const tcb = await $w.cloud.getCloudInstance();
+      const db = tcb.database();
+
+      // 检查是否已绑定关系
+      const relationResult = await db.collection('cersay_bind_relations').where({
+        _openid: tcb.auth().currentUser?.openid
+      }).get();
+      if (relationResult.data.length === 0) {
+        toast({
+          title: '还未绑定伴侣',
+          description: '请先在"我的"页面绑定你的另一半~',
+          variant: 'destructive'
+        });
+        return;
+      }
+
+      // 保存到communications表
+      await db.collection('cersay_communications').add({
+        menu: menu,
+        fromUserId: $w.auth.currentUser.userId,
+        toUserId: relationResult.data[0].partnerId,
+        createTime: new Date().toISOString(),
+        isRead: false
+      });
+      toast({
+        title: '发送成功！',
+        description: 'TA已经收到你的菜单啦~'
+      });
+    } catch (error) {
+      console.error('发送失败:', error);
+      toast({
+        title: '发送失败',
+        description: '请稍后重试',
+        variant: 'destructive'
+      });
+    }
+  };
+  return <div className="min-h-screen bg-gradient-to-br from-[#FFF5F0] via-[#FFECD9] to-[#FF9A8B]/20 pb-24">
+      {/* 顶部欢迎区 */}
+      <div className="pt-12 pb-8 px-6 animate-fadeIn">
+        <h1 className="text-3xl font-bold text-[#2D3436] mb-2" style={{
+        fontFamily: 'Noto Serif SC, serif'
+      }}>
+          {user?.nickName ? `${user.nickName}，` : ''}今晚吃什么？
+        </h1>
+        <p className="text-[#636E72] text-lg">
+          告别选择内耗，让吃饭变成小浪漫~
+        </p>
+      </div>
+
+      {/* 剩余次数提示 */}
+      {user && <div className="px-6 mb-6 animate-fadeIn" style={{
+      animationDelay: '0.1s'
+    }}>
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-[#636E72]">今日剩余生成次数</span>
+              <span className="text-[#FF6B6B] font-bold text-lg">{remainingCount}次</span>
+            </div>
+            {remainingCount <= 2 && <p className="text-xs text-[#FF6B6B] mt-2">次数不多啦，升级会员可无限生成哦~</p>}
+          </div>
+        </div>}
+
+      {/* 主操作区 */}
+      <div className="px-6">
+        <div className="flex justify-center mb-8 animate-fadeIn" style={{
+        animationDelay: '0.2s'
+      }}>
+          <Button onClick={generateMenu} disabled={loading} className="bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] hover:from-[#FF8A7B] hover:to-[#FF5A5A] text-white rounded-full px-12 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 button-hover">
+            {loading ? <RefreshCw className="w-6 h-6 animate-spin mr-2" /> : <Sparkles className="w-6 h-6 mr-2" />}
+            {loading ? '生成中...' : '随机生成菜单'}
+          </Button>
+        </div>
+
+        {/* 菜单展示区 */}
+        {menu && <div className="animate-fadeIn">
+            <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0 rounded-3xl overflow-hidden card-shadow">
+              <CardHeader className="bg-gradient-to-r from-[#FF9A8B]/10 to-[#FF6B6B]/10 pb-4">
+                <CardTitle className="text-2xl text-[#2D3436]" style={{
+              fontFamily: 'Noto Serif SC, serif'
+            }}>
+                  {menu.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                {/* 俏皮话 */}
+                <div className="bg-[#FFECD9] rounded-2xl p-4 mb-6">
+                  <p className="text-[#2D3436] text-center italic">{menu.message}</p>
+                </div>
+
+                {/* 菜品信息 */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="text-center">
+                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.difficulty}</div>
+                    <div className="text-[#636E72] text-sm">难度</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.time}</div>
+                    <div className="text-[#636E72] text-sm">用时</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[#FF6B6B] font-bold text-lg">{menu.tags[0]}</div>
+                    <div className="text-[#636E72] text-sm">特色</div>
+                  </div>
+                </div>
+
+                {/* 标签 */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {menu.tags.map((tag, index) => <span key={index} className="bg-[#FFECD9] text-[#2D3436] px-3 py-1 rounded-full text-sm">
+                      {tag}
+                    </span>)}
+                </div>
+
+                {/* 操作按钮 */}
+                <div className="flex gap-3">
+                  <Button onClick={handleLike} className={`flex-1 rounded-full ${isLiked ? 'bg-[#FF6B6B] text-white' : 'bg-[#FFECD9] text-[#2D3436] hover:bg-[#FFD9C4]'}`}>
+                    <Heart className={`w-5 h-5 mr-2 ${isLiked ? 'fill-current' : ''}`} />
+                    {isLiked ? '已收藏' : '收藏'}
+                  </Button>
+                  <Button onClick={handleSendToPartner} className="flex-1 bg-gradient-to-r from-[#FF9A8B] to-[#FF6B6B] text-white rounded-full hover:shadow-lg transition-all button-hover">
+                    <Send className="w-5 h-5 mr-2" />
+                    发给TA
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>}
+
+        {/* 空状态提示 */}
+        {!menu && !loading && <div className="text-center py-12 animate-fadeIn" style={{
+        animationDelay: '0.3s'
+      }}>
+            <UtensilsCrossed className="w-16 h-16 text-[#FF9A8B]/40 mx-auto mb-4" />
+            <p className="text-[#636E72]">点击上方按钮，开始今天的美食之旅吧~</p>
+          </div>}
+      </div>
+    </div>;
+}
