@@ -17,6 +17,7 @@ export default function Home(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState(null);
   const [remainingCount, setRemainingCount] = useState(5);
+  const [sweetMessage, setSweetMessage] = useState('');
 
   // 预设家常菜库
   const menuDatabase = [{
@@ -125,6 +126,9 @@ export default function Home(props) {
   const sweetMessages = ['今天辛苦啦，给你做顿好吃的~', '这道菜超适合今天的你！', '猜猜今天吃什么？惊喜来啦~', '为你准备的专属菜单，请查收~', '今天也要好好吃饭哦！', '这道菜里有我对你的爱~', '吃饭啦吃饭啦，不许挑食哦~', '今天的菜单，是为你量身定制的！'];
   useEffect(() => {
     loadUserInfo();
+    // 随机选择一句小情话
+    const randomMessage = sweetMessages[Math.floor(Math.random() * sweetMessages.length)];
+    setSweetMessage(randomMessage);
   }, []);
   const loadUserInfo = async () => {
     try {
@@ -266,7 +270,7 @@ export default function Home(props) {
           {user?.nickName ? `${user.nickName}，` : ''}今晚吃什么？
         </h1>
         <p className="text-[#636E72] text-lg">
-          告别选择内耗，让吃饭变成小浪漫~
+          {sweetMessage}
         </p>
       </div>
 
