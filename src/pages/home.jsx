@@ -309,10 +309,10 @@ export default function Home(props) {
         <div className="flex justify-center mb-8 animate-fadeIn" style={{
         animationDelay: '0.2s' }}>
 
-          <Button onClick={generateMenu} disabled={loading} className="from-[#FF9A8B] to-[#FF6B6B] hover:from-[#FF8A7B] hover:to-[#FF5A5A] rounded-full px-12 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 button-hover text-blue-700 bg-blue-700">
-
-
-        </Button>
+          <Button onClick={generateMenu} disabled={loading} className="from-[#FF9A8B] to-[#FF6B6B] hover:from-[#FF8A7B] hover:to-[#FF5A5A] text-white rounded-full px-12 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300 button-hover bg-blue-700">
+            {loading ? <RefreshCw className="w-6 h-6 animate-spin mr-2" /> : <Sparkles className="w-6 h-6 mr-2" />}
+            {loading ? '生成中...' : '随机生成菜单'}
+          </Button>
         </div>
 
         {/* 菜单展示区 */}
