@@ -26,11 +26,10 @@ export default function TabBar({
     left: 0,
     right: 0,
     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(20px)',
+    backdropFilter: 'blur(10px)',
     borderTop: '1px solid #FFECD9',
     padding: '12px 24px',
-    zIndex: 9999,
-    boxShadow: '0 -4px 20px rgba(255, 107, 107, 0.1)'
+    zIndex: 9999
   }}>
       <div style={{
       display: 'flex',

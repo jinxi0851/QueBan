@@ -1,0 +1,190 @@
+<!-- 拿手菜管理页面模板 -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="header-left" bindtap="navigateBack">
+      <text class="back-icon">←</text>
+    </view>
+    <text class="page-title">我的拿手菜</text>
+    <view class="header-right" bindtap="showAddForm">
+      <text class="add-icon">+</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载...</text>
+  </view>
+
+  <!-- 拿手菜列表 -->
+  <view class="dishes-list" wx:else>
+    <view 
+      class="dish-item card" 
+      wx:for="{{dishes}}" 
+      wx:key="id"
+    >
+      <view class="dish-header">
+        <text class="dish-name">{{item.name}}</text>
+        <view class="dish-actions">
+          <text class="action-btn edit-btn" data-dish-id="{{item.id}}" bindtap="editDish">编辑</text>
+          <text class="action-btn share-btn" data-dish-id="{{item.id}}" bindtap="shareDish">分享</text>
+          <text class="action-btn delete-btn" data-dish-id="{{item.id}}" bindtap="deleteDish">删除</text>
+        </view>
+      </view>
+      
+      <view class="dish-meta">
+        <text class="meta-item">{{item.difficulty}}</text>
+        <text class="meta-item">{{item.time}}</text>
+        <text class="meta-item">{{item.createTime}}</text>
+      </view>
+      
+      <view class="dish-description">
+        <text class="description-text">{{item.description}}</text>
+      </view>
+      
+      <view class="dish-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+        <text 
+          class="tag" 
+          wx:for="{{item.tags}}" 
+          wx:key="tagIndex"
+          wx:for-item="tagItem"
+        >
+          {{tagItem}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && dishes.length === 0}}">
+    <text class="empty-icon">🍳</text>
+    <text class="empty-text">还没有拿手菜</text>
+    <text class="empty-desc">快来分享你的拿手菜吧！</text>
+    <button class="btn btn-primary add-first-btn" bindtap="showAddForm">
+      添加拿手菜
+    </button>
+  </view>
+
+  <!-- 添加/编辑表单 -->
+  <view class="form-overlay" wx:if="{{showAddForm}}">
+    <view class="form-container">
+      <view class="form-header">
+        <text class="form-title">{{editingDish ? '编辑拿手菜' : '添加拿手菜'}}</text>
+        <text class="close-btn" bindtap="hideForm">×</text>
+      </view>
+      
+      <view class="form-content">
+        <!-- 菜名 -->
+        <view class="form-item">
+          <text class="form-label">菜名 *</text>
+          <input 
+            class="form-input" 
+            placeholder="请输入菜名" 
+            value="{{formData.name}}" 
+            data-field="name" 
+            bindinput="onFormInput"
+          />
+        </view>
+        
+        <!-- 描述 -->
+        <view class="form-item">
+          <text class="form-label">描述 *</text>
+          <textarea 
+            class="form-textarea" 
+            placeholder="请输入菜品描述" 
+            value="{{formData.description}}" 
+            data-field="description" 
+            bindinput="onFormInput"
+            maxlength="200"
+          />
+        </view>
+        
+        <!-- 难度 -->
+        <view class="form-item">
+          <text class="form-label">难度</text>
+          <picker 
+            mode="selector" 
+            range="['简单', '中等', '困难']" 
+            value="{{formData.difficulty === '简单' ? 0 : formData.difficulty === '中等' ? 1 : 2}}" 
+            bindchange="onDifficultyChange"
+          >
+            <view class="form-picker">
+              <text class="picker-text">{{formData.difficulty}}</text>
+              <text class="picker-arrow">›</text>
+            </view>
+          </picker>
+        </view>
+        
+        <!-- 制作时间 -->
+        <view class="form-item">
+          <text class="form-label">制作时间 *</text>
+          <input 
+            class="form-input" 
+            placeholder="如：30分钟" 
+            value="{{formData.time}}" 
+            data-field="time" 
+            bindinput="onFormInput"
+          />
+        </view>
+        
+        <!-- 食材 -->
+        <view class="form-item">
+          <text class="form-label">食材</text>
+          <textarea 
+            class="form-textarea" 
+            placeholder="请输入所需食材" 
+            value="{{formData.ingredients}}" 
+            data-field="ingredients" 
+            bindinput="onFormInput"
+            maxlength="500"
+          />
+        </view>
+        
+        <!-- 制作步骤 -->
+        <view class="form-item">
+          <text class="form-label">制作步骤</text>
+          <textarea 
+            class="form-textarea" 
+            placeholder="请输入制作步骤" 
+            value="{{formData.steps}}" 
+            data-field="steps" 
+            bindinput="onFormInput"
+            maxlength="1000"
+          />
+        </view>
+        
+        <!-- 标签 -->
+        <view class="form-item">
+          <text class="form-label">标签</text>
+          <view class="tags-input">
+            <view 
+              class="tag-item" 
+              wx:for="{{formData.tags}}" 
+              wx:key="index"
+            >
+              <text class="tag-text">{{item}}</text>
+              <text 
+                class="tag-remove" 
+                data-index="{{index}}" 
+                bindtap="removeTag"
+              >
+                ×
+              </text>
+            </view>
+            <input 
+              class="tag-input" 
+              placeholder="添加标签" 
+              bindblur="addTag"
+            />
+          </view>
+        </view>
+      </view>
+      
+      <view class="form-footer">
+        <button class="btn btn-secondary cancel-btn" bindtap="hideForm">取消</button>
+        <button class="btn btn-primary save-btn" bindtap="saveDish">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

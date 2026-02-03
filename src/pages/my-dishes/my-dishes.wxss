@@ -1,0 +1,405 @@
+/* 拿手菜管理页面样式 */
+
+/* 页面标题 */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 40rpx;
+  background: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 30rpx;
+}
+
+.header-left,
+.header-right {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f8f9fa;
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.add-icon {
+  font-size: 36rpx;
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 拿手菜列表 */
+.dishes-list {
+  margin-bottom: 30rpx;
+}
+
+.dish-item {
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+}
+
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.dish-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.dish-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  padding: 8rpx 16rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+  border: none;
+}
+
+.edit-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.share-btn {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.delete-btn {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+/* 菜品元信息 */
+.dish-meta {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.meta-item {
+  font-size: 24rpx;
+  color: #9aa0a6;
+  background: #f1f3f4;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+/* 菜品描述 */
+.dish-description {
+  margin-bottom: 16rpx;
+}
+
+.description-text {
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* 菜品标签 */
+.dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.tag {
+  background: #e8f5e8;
+  color: #4caf50;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 40rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #9aa0a6;
+  line-height: 1.5;
+  margin-bottom: 40rpx;
+}
+
+.add-first-btn {
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+
+/* 表单覆盖层 */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+}
+
+.form-container {
+  background: #ffffff;
+  border-radius: 20rpx;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 表单头部 */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #9aa0a6;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f8f9fa;
+}
+
+/* 表单内容 */
+.form-content {
+  flex: 1;
+  padding: 30rpx 40rpx;
+  overflow-y: auto;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 20rpx 24rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333333;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #ff6b6b;
+}
+
+.form-textarea {
+  height: 120rpx;
+  resize: none;
+}
+
+/* 选择器 */
+.form-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  background: #ffffff;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.picker-arrow {
+  font-size: 32rpx;
+  color: #9aa0a6;
+}
+
+/* 标签输入 */
+.tags-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  padding: 20rpx 24rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  background: #ffffff;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  background: #e8f5e8;
+  color: #4caf50;
+  padding: 8rpx 12rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+}
+
+.tag-text {
+  margin-right: 8rpx;
+}
+
+.tag-remove {
+  font-size: 20rpx;
+  color: #4caf50;
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.tag-input {
+  flex: 1;
+  min-width: 120rpx;
+  border: none;
+  outline: none;
+  font-size: 28rpx;
+  color: #333333;
+  background: transparent;
+}
+
+/* 表单底部 */
+.form-footer {
+  display: flex;
+  gap: 20rpx;
+  padding: 30rpx 40rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.cancel-btn,
+.save-btn {
+  flex: 1;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+}
+
+.cancel-btn {
+  background: #f1f3f4;
+  color: #5f6368;
+}
+
+.save-btn {
+  background: #ff6b6b;
+  color: #ffffff;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx;
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  color: #9aa0a6;
+  font-size: 28rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .page-header {
+    padding: 24rpx 30rpx;
+  }
+  
+  .page-title {
+    font-size: 32rpx;
+  }
+  
+  .dish-item {
+    padding: 24rpx;
+  }
+  
+  .dish-name {
+    font-size: 30rpx;
+  }
+  
+  .form-overlay {
+    padding: 20rpx;
+  }
+  
+  .form-header {
+    padding: 24rpx 30rpx;
+  }
+  
+  .form-content {
+    padding: 24rpx 30rpx;
+  }
+  
+  .form-footer {
+    padding: 24rpx 30rpx;
+  }
+}

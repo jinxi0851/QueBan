@@ -1,0 +1,280 @@
+/* 首页样式 */
+
+/* 顶部图片容器 */
+.daily-image-container {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+}
+
+.daily-image {
+  width: 100%;
+  height: 100%;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  padding: 30rpx;
+}
+
+.overlay-text {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+/* 俏皮话 */
+.sweet-message {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: #ffffff;
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.message-text {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+/* 生成菜单区域 */
+.generate-section {
+  margin-bottom: 30rpx;
+}
+
+.generate-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.remaining-count {
+  text-align: center;
+}
+
+.count-text {
+  color: #9aa0a6;
+  font-size: 24rpx;
+}
+
+/* 菜单展示 */
+.menu-display {
+  margin-bottom: 30rpx;
+}
+
+.menu-card {
+  padding: 30rpx;
+}
+
+.menu-header {
+  margin-bottom: 30rpx;
+}
+
+.menu-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.menu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.tag {
+  background: #f1f3f4;
+  color: #5f6368;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+/* 菜品列表 */
+.dishes-list {
+  margin-bottom: 30rpx;
+}
+
+.dish-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+}
+
+.dish-info {
+  flex: 1;
+}
+
+.dish-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.dish-meta {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.dish-time,
+.dish-difficulty {
+  color: #9aa0a6;
+  font-size: 24rpx;
+}
+
+.dish-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.dish-tag {
+  background: #e8f5e8;
+  color: #4caf50;
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  font-size: 20rpx;
+}
+
+/* 菜单底部 */
+.menu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.total-time {
+  color: #9aa0a6;
+  font-size: 24rpx;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  border: none;
+  background: #f1f3f4;
+  color: #5f6368;
+}
+
+.like-btn.liked {
+  background: #ffebee;
+  color: #ff6b6b;
+}
+
+.btn-icon {
+  font-size: 20rpx;
+}
+
+.btn-text {
+  font-size: 24rpx;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  margin-bottom: 20rpx;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+}
+
+.action-item:active {
+  background: #e9ecef;
+  transform: scale(0.98);
+}
+
+.action-icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.action-text {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx;
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  color: #9aa0a6;
+  font-size: 28rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .daily-image-container {
+    height: 300rpx;
+  }
+  
+  .overlay-text {
+    font-size: 28rpx;
+  }
+  
+  .menu-name {
+    font-size: 32rpx;
+  }
+  
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,129 @@
+<!-- 广场页面模板 -->
+<view class="container">
+  <!-- 标签切换 -->
+  <view class="tab-switch">
+    <view 
+      class="tab-item {{activeTab === 'hot' ? 'active' : ''}}" 
+      data-tab="hot" 
+      bindtap="switchTab"
+    >
+      <text class="tab-text">热门</text>
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'new' ? 'active' : ''}}" 
+      data-tab="new" 
+      bindtap="switchTab"
+    >
+      <text class="tab-text">最新</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载...</text>
+  </view>
+
+  <!-- 帖子列表 -->
+  <view class="posts-list" wx:else>
+    <view 
+      class="post-item card" 
+      wx:for="{{posts}}" 
+      wx:key="_id"
+    >
+      <!-- 用户信息 -->
+      <view class="post-header">
+        <image 
+          class="author-avatar" 
+          src="{{item.authorAvatar}}" 
+          mode="aspectFill"
+        />
+        <view class="author-info">
+          <text class="author-name">{{item.authorName}}</text>
+          <text class="post-time">{{item.createTime}}</text>
+        </view>
+      </view>
+
+      <!-- 菜单信息 -->
+      <view class="menu-content">
+        <view class="menu-header">
+          <text class="menu-name">{{item.menu.name}}</text>
+          <view class="menu-tags">
+            <text 
+              class="tag" 
+              wx:for="{{item.menu.tags}}" 
+              wx:key="tagIndex"
+              wx:for-item="tagItem"
+            >
+              {{tagItem}}
+            </text>
+          </view>
+        </view>
+        
+        <view class="menu-meta">
+          <text class="meta-item">{{item.menu.time}}</text>
+          <text class="meta-item">{{item.menu.difficulty}}</text>
+        </view>
+        
+        <view class="menu-message">
+          <text class="message-text">{{item.menu.message}}</text>
+        </view>
+      </view>
+
+      <!-- AI评论 -->
+      <view class="ai-comment">
+        <view class="comment-header">
+          <text class="comment-icon">🤖</text>
+          <text class="comment-title">AI点评</text>
+        </view>
+        <text class="comment-content">{{item.aiComment}}</text>
+      </view>
+
+      <!-- 互动按钮 -->
+      <view class="post-actions">
+        <view 
+          class="action-btn {{item.isLiked ? 'liked' : ''}}" 
+          data-post-id="{{item._id}}" 
+          bindtap="toggleLike"
+        >
+          <text class="action-icon">♥</text>
+          <text class="action-text">{{item.likeCount}}</text>
+        </view>
+        
+        <view 
+          class="action-btn" 
+          data-post-id="{{item._id}}" 
+          bindtap="navigateToComments"
+        >
+          <text class="action-icon">💬</text>
+          <text class="action-text">{{item.commentCount}}</text>
+        </view>
+        
+        <view 
+          class="action-btn {{item.isBookmarked ? 'bookmarked' : ''}}" 
+          data-post-id="{{item._id}}" 
+          bindtap="toggleBookmark"
+        >
+          <text class="action-icon">🔖</text>
+          <text class="action-text">收藏</text>
+        </view>
+        
+        <view 
+          class="action-btn" 
+          data-post-id="{{item._id}}" 
+          bindtap="sharePost"
+        >
+          <text class="action-icon">↗</text>
+          <text class="action-text">分享</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && posts.length === 0}}">
+    <text class="empty-icon">🍽️</text>
+    <text class="empty-text">暂无内容</text>
+    <text class="empty-desc">快来分享你的拿手菜吧！</text>
+  </view>
+</view>

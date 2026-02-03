@@ -1,0 +1,127 @@
+<!-- 个人中心页面模板 -->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-section card">
+    <view class="user-info" wx:if="{{user}}">
+      <image 
+        class="user-avatar" 
+        src="{{user.avatarUrl || 'https://api.dicebear.com/7.x/avataaars/svg?seed=User'}}" 
+        mode="aspectFill"
+      />
+      <view class="user-details">
+        <text class="user-name">{{user.name || '用户'}}</text>
+        <text class="user-nickname" wx:if="{{user.nickName}}">{{user.nickName}}</text>
+        <text class="user-type">{{user.type || '普通用户'}}</text>
+      </view>
+    </view>
+    
+    <!-- 未登录状态 -->
+    <view class="login-prompt" wx:else>
+      <text class="login-text">请先登录</text>
+      <button class="btn btn-primary login-btn" bindtap="navigateToLogin">
+        立即登录
+      </button>
+    </view>
+  </view>
+
+  <!-- 统计数据 -->
+  <view class="stats-section card" wx:if="{{user}}">
+    <view class="section-title">
+      <text class="title-text">我的数据</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-number">{{stats.totalMenus}}</text>
+        <text class="stat-label">生成菜单</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{stats.totalLikes}}</text>
+        <text class="stat-label">获得点赞</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-number">{{stats.totalShares}}</text>
+        <text class="stat-label">分享次数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷功能 -->
+  <view class="quick-actions card" wx:if="{{user}}">
+    <view class="section-title">
+      <text class="title-text">快捷功能</text>
+    </view>
+    <view class="action-list">
+      <view class="action-item" bindtap="navigateToMyDishes">
+        <text class="action-icon">🍳</text>
+        <text class="action-text">我的拿手菜</text>
+        <text class="action-arrow">›</text>
+      </view>
+      <view class="action-item" bindtap="navigateToFavorites">
+        <text class="action-icon">🔖</text>
+        <text class="action-text">我的收藏</text>
+        <text class="action-arrow">›</text>
+      </view>
+      <view class="action-item" bindtap="navigateToHistory">
+        <text class="action-icon">📜</text>
+        <text class="action-text">历史记录</text>
+        <text class="action-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 菜单历史 -->
+  <view class="history-section card" wx:if="{{user && menuHistory.length > 0}}">
+    <view class="section-header">
+      <text class="title-text">最近菜单</text>
+      <view class="header-actions">
+        <text class="clear-btn" bindtap="clearHistory">清除</text>
+      </view>
+    </view>
+    <view class="history-list">
+      <view 
+        class="history-item" 
+        wx:for="{{menuHistory}}" 
+        wx:key="index"
+      >
+        <view class="history-content">
+          <text class="history-menu-name">{{item.name}}</text>
+          <view class="history-meta">
+            <text class="history-time">{{formatTime(item.createTime)}}</text>
+            <text class="history-tags">{{item.tags.join(', ')}}</text>
+          </view>
+        </view>
+        <text class="history-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置选项 -->
+  <view class="settings-section card">
+    <view class="section-title">
+      <text class="title-text">设置</text>
+    </view>
+    <view class="action-list">
+      <view class="action-item" bindtap="navigateToSettings">
+        <text class="action-icon">⚙️</text>
+        <text class="action-text">通用设置</text>
+        <text class="action-arrow">›</text>
+      </view>
+      <view class="action-item" bindtap="shareApp">
+        <text class="action-icon">↗</text>
+        <text class="action-text">分享应用</text>
+        <text class="action-arrow">›</text>
+      </view>
+      <view class="action-item" bindtap="logout" wx:if="{{user}}">
+        <text class="action-icon">🚪</text>
+        <text class="action-text">退出登录</text>
+        <text class="action-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载...</text>
+  </view>
+</view>

@@ -1,0 +1,121 @@
+<!-- 首页模板 -->
+<view class="container">
+  <!-- 顶部图片 -->
+  <view class="daily-image-container">
+    <image 
+      class="daily-image" 
+      src="{{dailyImage}}" 
+      mode="aspectFill"
+      bindtap="shareMenu"
+    />
+    <view class="image-overlay">
+      <text class="overlay-text">QueBan女王盛宴</text>
+    </view>
+  </view>
+
+  <!-- 俏皮话 -->
+  <view class="sweet-message" wx:if="{{sweetMessage}}">
+    <text class="message-text">{{sweetMessage}}</text>
+  </view>
+
+  <!-- 生成菜单按钮 -->
+  <view class="generate-section">
+    <button 
+      class="btn btn-primary generate-btn" 
+      bindtap="generateMenu"
+      disabled="{{loading}}"
+    >
+      <text wx:if="{{loading}}">生成中...</text>
+      <text wx:else>生成今日菜单</text>
+    </button>
+    <view class="remaining-count">
+      <text class="count-text">今日剩余次数：{{remainingCount}}</text>
+    </view>
+  </view>
+
+  <!-- 菜单展示 -->
+  <view class="menu-display" wx:if="{{menu}}">
+    <view class="card menu-card">
+      <view class="menu-header">
+        <text class="menu-name">{{menu.name}}</text>
+        <view class="menu-tags">
+          <text 
+            class="tag" 
+            wx:for="{{menu.tags}}" 
+            wx:key="index"
+          >
+            {{item}}
+          </text>
+        </view>
+      </view>
+      
+      <view class="dishes-list">
+        <view 
+          class="dish-item" 
+          wx:for="{{menu.dishes}}" 
+          wx:key="index"
+        >
+          <view class="dish-info">
+            <text class="dish-name">{{item.name}}</text>
+            <view class="dish-meta">
+              <text class="dish-time">{{item.time}}</text>
+              <text class="dish-difficulty">{{item.difficulty}}</text>
+            </view>
+            <view class="dish-tags">
+              <text 
+                class="dish-tag" 
+                wx:for="{{item.tags}}" 
+                wx:key="tagIndex"
+                wx:for-item="tagItem"
+              >
+                {{tagItem}}
+              </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="menu-footer">
+        <text class="total-time">总耗时：{{menu.totalTime}}</text>
+        <view class="action-buttons">
+          <button 
+            class="action-btn like-btn {{isLiked ? 'liked' : ''}}" 
+            bindtap="toggleLike"
+          >
+            <text class="btn-icon">♥</text>
+            <text class="btn-text">点赞</text>
+          </button>
+          <button class="action-btn share-btn" bindtap="shareMenu">
+            <text class="btn-icon">↗</text>
+            <text class="btn-text">分享</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="card">
+      <view class="section-title">
+        <text class="title-text">快捷操作</text>
+      </view>
+      <view class="action-grid">
+        <view class="action-item" bindtap="navigateToMyDishes">
+          <text class="action-icon">🍳</text>
+          <text class="action-text">我的拿手菜</text>
+        </view>
+        <view class="action-item" bindtap="navigateToSquare">
+          <text class="action-icon">🏛️</text>
+          <text class="action-text">美食广场</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在生成专属菜单...</text>
+  </view>
+</view>

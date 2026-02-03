@@ -1,0 +1,284 @@
+/* 登录页面样式 */
+
+/* 顶部图片 */
+.header-section {
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 40rpx;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+}
+
+.header-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  padding: 40rpx;
+  text-align: center;
+}
+
+.app-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+}
+
+.app-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+/* 登录表单 */
+.login-form {
+  padding: 0 40rpx;
+}
+
+.form-section {
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+
+.form-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.form-desc {
+  display: block;
+  font-size: 28rpx;
+  color: #9aa0a6;
+}
+
+/* 登录方式 */
+.login-method {
+  margin-bottom: 40rpx;
+}
+
+.method-title {
+  margin-bottom: 30rpx;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 输入组 */
+.input-group {
+  margin-bottom: 40rpx;
+}
+
+.input-item {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.input-field {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333333;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #ff6b6b;
+}
+
+/* 验证码输入 */
+.code-input-wrapper {
+  display: flex;
+  gap: 20rpx;
+}
+
+.code-input {
+  flex: 1;
+}
+
+.send-code-btn {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #ff6b6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.send-code-btn.disabled {
+  background: #e0e0e0;
+  color: #9aa0a6;
+}
+
+/* 登录按钮 */
+.login-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+/* 分割线 */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 40rpx 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1rpx;
+  background: #e0e0e0;
+}
+
+.divider-text {
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  color: #9aa0a6;
+}
+
+/* 微信登录 */
+.wx-login-section {
+  margin-bottom: 40rpx;
+}
+
+.wx-login-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #07c160;
+  color: #ffffff;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.wx-icon {
+  font-size: 32rpx;
+}
+
+.wx-text {
+  font-size: 28rpx;
+}
+
+/* 提示信息 */
+.login-tips {
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #9aa0a6;
+}
+
+.link-text {
+  font-size: 24rpx;
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+/* 返回按钮 */
+.back-button {
+  position: fixed;
+  top: 60rpx;
+  left: 40rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .header-section {
+    height: 300rpx;
+  }
+  
+  .app-title {
+    font-size: 40rpx;
+  }
+  
+  .app-subtitle {
+    font-size: 24rpx;
+  }
+  
+  .login-form {
+    padding: 0 30rpx;
+  }
+  
+  .form-title {
+    font-size: 36rpx;
+  }
+  
+  .form-desc {
+    font-size: 26rpx;
+  }
+  
+  .input-field {
+    height: 70rpx;
+    font-size: 26rpx;
+  }
+  
+  .send-code-btn {
+    width: 180rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 24rpx;
+  }
+  
+  .login-btn {
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+  }
+  
+  .wx-login-btn {
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 26rpx;
+  }
+}

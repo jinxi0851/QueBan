@@ -42,18 +42,28 @@ export default function Profile(props) {
       const tcb = await $w.cloud.getCloudInstance();
       const db = tcb.database();
 
-      // 调用用户统计云函数
-      const result = await $w.cloud.callFunction({
-        name: 'userStats',
-        data: {
-          action: 'getStats'
-        }
+      // 查询用户发布的帖子
+      // 查询用户发布的帖子
+      const postsResult = await db.collection('posts').where({
+        _openid: tcb.auth().currentUser?.openid
+      }).get();
+      let totalLikes = 0;
+      let totalComments = 0;
+      postsResult.data.forEach(post => {
+        totalLikes += post.likeCount || 0;
+        totalComments += post.commentCount || 0;
       });
-      if (result.result.success) {
-        setStats(result.result.stats);
-      } else {
-        throw new Error(result.result.error);
-      }
+
+      // 查询收藏数
+      // 查询收藏数
+      const favoritesResult = await db.collection('favorites').where({
+        _openid: tcb.auth().currentUser?.openid
+      }).get();
+      setStats({
+        likes: totalLikes,
+        favorites: favoritesResult.data.length,
+        comments: totalComments
+      });
     } catch (error) {
       console.error('加载统计数据失败:', error);
     }

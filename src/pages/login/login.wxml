@@ -1,0 +1,103 @@
+<!-- 登录页面模板 -->
+<view class="container">
+  <!-- 顶部图片 -->
+  <view class="header-section">
+    <image 
+      class="login-image" 
+      src="https://cersay-0gtnza71ab2663d4-1397510798.tcloudbaseapp.com/resources/2026-02/lowcode-2424451" 
+      mode="aspectFill"
+    />
+    <view class="header-overlay">
+      <text class="app-title">QueBan</text>
+      <text class="app-subtitle">女王盛宴</text>
+    </view>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <view class="form-section">
+      <text class="form-title">欢迎回来</text>
+      <text class="form-desc">请选择登录方式</text>
+    </view>
+
+    <!-- 手机号登录 -->
+    <view class="login-method">
+      <view class="method-title">
+        <text class="title-text">手机号登录</text>
+      </view>
+      
+      <view class="input-group">
+        <view class="input-item">
+          <text class="input-label">手机号</text>
+          <input 
+            class="input-field" 
+            type="number" 
+            placeholder="请输入手机号" 
+            value="{{phoneNumber}}" 
+            bindinput="onPhoneInput"
+            maxlength="11"
+          />
+        </view>
+        
+        <view class="input-item">
+          <text class="input-label">验证码</text>
+          <view class="code-input-wrapper">
+            <input 
+              class="input-field code-input" 
+              type="number" 
+              placeholder="请输入验证码" 
+              value="{{verificationCode}}" 
+              bindinput="onCodeInput"
+              maxlength="6"
+            />
+            <button 
+              class="send-code-btn {{isCodeSent ? 'disabled' : ''}}" 
+              bindtap="sendVerificationCode"
+              disabled="{{isCodeSent || loading}}"
+            >
+              <text wx:if="{{isCodeSent}}">{{codeCountdown}}s</text>
+              <text wx:else>发送验证码</text>
+            </button>
+          </view>
+        </view>
+      </view>
+      
+      <button 
+        class="btn btn-primary login-btn" 
+        bindtap="login"
+        disabled="{{loading}}"
+      >
+        <text wx:if="{{loading}}">登录中...</text>
+        <text wx:else>登录</text>
+      </button>
+    </view>
+
+    <!-- 分割线 -->
+    <view class="divider">
+      <view class="divider-line"></view>
+      <text class="divider-text">或</text>
+      <view class="divider-line"></view>
+    </view>
+
+    <!-- 微信登录 -->
+    <view class="wx-login-section">
+      <button class="wx-login-btn" bindtap="wxLogin">
+        <text class="wx-icon">📱</text>
+        <text class="wx-text">微信授权登录</text>
+      </button>
+    </view>
+
+    <!-- 提示信息 -->
+    <view class="login-tips">
+      <text class="tip-text">登录即表示同意</text>
+      <text class="link-text">《用户协议》</text>
+      <text class="tip-text">和</text>
+      <text class="link-text">《隐私政策》</text>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-button" bindtap="navigateBack">
+    <text class="back-icon">←</text>
+  </view>
+</view>

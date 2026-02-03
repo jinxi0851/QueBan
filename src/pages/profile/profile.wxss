@@ -1,0 +1,292 @@
+/* 个人中心页面样式 */
+
+/* 用户信息区域 */
+.user-section {
+  margin-bottom: 30rpx;
+  padding: 40rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  border: 4rpx solid #ff6b6b;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.user-nickname {
+  font-size: 28rpx;
+  color: #5f6368;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.user-type {
+  font-size: 24rpx;
+  color: #9aa0a6;
+  background: #f1f3f4;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  display: inline-block;
+}
+
+/* 未登录状态 */
+.login-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0;
+}
+
+.login-text {
+  font-size: 32rpx;
+  color: #9aa0a6;
+  margin-bottom: 30rpx;
+}
+
+.login-btn {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+/* 统计数据 */
+.stats-section {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  margin-bottom: 30rpx;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.stat-number {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin-bottom: 8rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #5f6368;
+}
+
+/* 快捷功能 */
+.quick-actions {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+.action-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.action-item:last-child {
+  border-bottom: none;
+}
+
+.action-item:active {
+  background: #f8f9fa;
+}
+
+.action-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  width: 40rpx;
+  text-align: center;
+}
+
+.action-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.action-arrow {
+  font-size: 32rpx;
+  color: #9aa0a6;
+}
+
+/* 菜单历史 */
+.history-section {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.header-actions {
+  display: flex;
+  gap: 20rpx;
+}
+
+.clear-btn {
+  font-size: 24rpx;
+  color: #ff6b6b;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #ff6b6b;
+  border-radius: 12rpx;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item:active {
+  background: #f8f9fa;
+}
+
+.history-content {
+  flex: 1;
+}
+
+.history-menu-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.history-meta {
+  display: flex;
+  gap: 20rpx;
+}
+
+.history-time {
+  font-size: 22rpx;
+  color: #9aa0a6;
+}
+
+.history-tags {
+  font-size: 22rpx;
+  color: #5f6368;
+}
+
+.history-arrow {
+  font-size: 28rpx;
+  color: #9aa0a6;
+}
+
+/* 设置选项 */
+.settings-section {
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx;
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  color: #9aa0a6;
+  font-size: 28rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .user-section {
+    padding: 30rpx;
+  }
+  
+  .user-avatar {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .user-name {
+    font-size: 32rpx;
+  }
+  
+  .stats-grid {
+    gap: 20rpx;
+  }
+  
+  .stat-number {
+    font-size: 36rpx;
+  }
+  
+  .action-item {
+    padding: 20rpx 0;
+  }
+  
+  .action-icon {
+    font-size: 28rpx;
+  }
+  
+  .action-text {
+    font-size: 26rpx;
+  }
+}

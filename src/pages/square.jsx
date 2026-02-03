@@ -21,23 +21,22 @@ export default function Square(props) {
   const loadPosts = async () => {
     setLoading(true);
     try {
-      // 调用帖子管理云函数获取帖子列表
-      const result = await $w.cloud.callFunction({
-        name: 'postManagement',
-        data: {
-          action: 'getPosts',
-          sortBy: activeTab
-        }
-      });
-      if (result.result.success) {
-        if (result.result.posts.length > 0) {
-          setPosts(result.result.posts);
-        } else {
-          // 如果没有数据，使用虚拟数据
-          setPosts(getMockPosts());
-        }
+      const tcb = await $w.cloud.getCloudInstance();
+      const db = tcb.database();
+      let query = db.collection('posts');
+      if (activeTab === 'hot') {
+        // 热门：按点赞数排序
+        query = query.orderBy('likeCount', 'desc');
+      } else if (activeTab === 'new') {
+        // 最新：按时间排序
+        query = query.orderBy('createTime', 'desc');
+      }
+      const result = await query.limit(20).get();
+      if (result.data.length > 0) {
+        setPosts(result.data);
       } else {
-        throw new Error(result.result.error);
+        // 如果没有数据，使用虚拟数据
+        setPosts(getMockPosts());
       }
     } catch (error) {
       console.error('加载广场数据失败:', error);
@@ -265,31 +264,42 @@ export default function Square(props) {
       // 检查是否已点赞
       // 检查是否已点赞
       // 检查是否已点赞
-      // 调用帖子管理云函数处理点赞
-      const result = await $w.cloud.callFunction({
-        name: 'postManagement',
-        data: {
-          action: 'like',
-          postId: postId
-        }
-      });
-      if (result.result.success) {
-        // 更新本地帖子列表
-        const updatedPosts = posts.map(p => {
-          if (p._id === postId) {
-            return {
-              ...p,
-              likeCount: result.result.action === 'like' ? p.likeCount + 1 : p.likeCount - 1
-            };
-          }
-          return p;
+      const existingLike = await db.collection('likes').where({
+        postId: postId,
+        _openid: tcb.auth().currentUser?.openid
+      }).get();
+      if (existingLike.data.length > 0) {
+        // 取消点赞
+        await db.collection('likes').where({
+          postId: postId,
+          _openid: tcb.auth().currentUser?.openid
+        }).remove();
+        await db.collection('posts').doc(postId).update({
+          likeCount: posts.find(p => p._id === postId).likeCount - 1
         });
-        setPosts(updatedPosts);
+        setPosts(posts.map(p => p._id === postId ? {
+          ...p,
+          likeCount: p.likeCount - 1
+        } : p));
         toast({
-          title: result.result.message
+          title: '已取消点赞'
         });
       } else {
-        throw new Error(result.result.error);
+        // 点赞
+        await db.collection('likes').add({
+          postId: postId,
+          createTime: new Date().toISOString()
+        });
+        await db.collection('posts').doc(postId).update({
+          likeCount: posts.find(p => p._id === postId).likeCount + 1
+        });
+        setPosts(posts.map(p => p._id === postId ? {
+          ...p,
+          likeCount: p.likeCount + 1
+        } : p));
+        toast({
+          title: '点赞成功！'
+        });
       }
     } catch (error) {
       console.error('点赞失败:', error);
