@@ -1,6 +1,4 @@
 // 首页逻辑
-const app = getApp();
-
 Page({
   data: {
     menu: null,

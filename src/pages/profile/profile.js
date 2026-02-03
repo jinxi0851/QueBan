@@ -1,6 +1,4 @@
 // 个人中心页面逻辑
-const app = getApp();
-
 Page({
   data: {
     user: null,

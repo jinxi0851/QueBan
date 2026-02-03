@@ -1,6 +1,4 @@
 // 拿手菜管理页面逻辑
-const app = getApp();
-
 Page({
   data: {
     dishes: [],
