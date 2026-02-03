@@ -1,4 +1,8 @@
 // 首页逻辑
+const Page = function(config) {
+  return config;
+};
+
 Page({
   data: {
     menu: null,

@@ -1,4 +1,8 @@
 // 个人中心页面逻辑
+const Page = function(config) {
+  return config;
+};
+
 Page({
   data: {
     user: null,

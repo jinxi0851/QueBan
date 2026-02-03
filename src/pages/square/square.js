@@ -1,4 +1,8 @@
 // 广场页面逻辑
+const Page = function(config) {
+  return config;
+};
+
 Page({
   data: {
     posts: [],

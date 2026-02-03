@@ -1,4 +1,8 @@
 // 登录页面逻辑
+const Page = function(config) {
+  return config;
+};
+
 Page({
   data: {
     phoneNumber: '',
