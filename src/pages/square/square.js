@@ -1,4 +1,6 @@
 // 广场页面逻辑
+const app = getApp();
+
 Page({
   data: {
     posts: [],
